@@ -1,19 +1,16 @@
 :root {
   
   font-family: "Work Sans", sans-serif;
-  font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.5;
   font-weight: 400;
+  margin: 0px 0px; 
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
   background-color: #ffffff;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 1280px;
 
 }
 
@@ -22,9 +19,8 @@
 }
 body {
   
-  margin: 0;
+  margin: 0 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
