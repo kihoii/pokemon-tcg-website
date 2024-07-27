@@ -1,0 +1,1 @@
+import './CardsPage.scss';

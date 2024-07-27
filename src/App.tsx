@@ -4,11 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.scss'
 import React from 'react';
 import { DatePicker } from 'antd';
+import { HomePage } from './pages/HomePage/HomePage.tsx';
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return <DatePicker />;
+  return <div>
+    
+    <HomePage/>
+    </div>
 }
 
 export default App
