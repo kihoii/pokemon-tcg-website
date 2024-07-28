@@ -1,12 +1,10 @@
-import './HomePage.scss';
-
-
+import { Navbar } from "../../components/Navbar/Navbar";
+import "./HomePage.scss";
 
 export const HomePage = () => {
-    return (
-        <div>
-
-        </div>
-        
-    )
-}
+  return (
+    <>
+      <Navbar />
+    </>
+  );
+};
