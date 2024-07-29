@@ -1,4 +1,4 @@
-$blue-color: #1677ff;
+@import "../../variables";
 
 .navbar {
   display: flex;
@@ -13,7 +13,7 @@ $blue-color: #1677ff;
     align-items: center;
     font-size: 16px;
 
-    a {
+    .nav-link {
       text-decoration: none;
       color: $blue-color;
     }

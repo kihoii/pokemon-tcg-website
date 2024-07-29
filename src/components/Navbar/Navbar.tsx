@@ -8,10 +8,18 @@ export const Navbar = () => {
     <div className="navbar">
       <Logo />
       <nav>
-        <NavLink to="">Marketplace</NavLink>
-        <NavLink to="">Ranking</NavLink>
-        <NavLink to="">Connect a wallet</NavLink>
-        <Button type="primary">Sign up</Button>
+        <NavLink className="nav-link" to="/market">
+          Marketplace
+        </NavLink>
+        <NavLink className="nav-link" to="/ranking">
+          Ranking
+        </NavLink>
+        <NavLink className="nav-link" to="/wallet">
+          Connect a wallet
+        </NavLink>
+        <Button type="primary" href="/sign-up">
+          Sign up
+        </Button>
       </nav>
     </div>
   );
