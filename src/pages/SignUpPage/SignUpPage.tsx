@@ -1,4 +1,4 @@
-import './CreateUserAccountPage.scss';
+import './SignUpPage.scss';
 import placeholder  from './Placeholder.png';
 import type { FormProps } from 'antd';
 import { Button, Form, Input } from 'antd';
@@ -19,7 +19,7 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 };
 
 
-export const CreateUserAccountPage = () => {
+export const SignUpPage = () => {
     return (
         <div> 
             <section id="main-section">

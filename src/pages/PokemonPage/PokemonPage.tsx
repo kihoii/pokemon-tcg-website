@@ -1,1 +1,0 @@
-import './PokemonPage.scss';

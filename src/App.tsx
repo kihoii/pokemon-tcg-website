@@ -6,14 +6,14 @@ import React from 'react';
 import { DatePicker } from 'antd';
 import { HomePage } from './pages/HomePage/HomePage.tsx';
 import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
-import { CreateUserAccountPage } from './pages/CreateUserAccountPage/CreateUserAccountPage.tsx';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return <div>
 
-    <CreateUserAccountPage/>
     </div>
 }
 
