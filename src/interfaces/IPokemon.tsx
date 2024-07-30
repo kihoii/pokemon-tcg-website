@@ -1,4 +1,4 @@
-export interface IPokemon {
+export interface PokemonDto {
   id: string;
   name: string;
   supertype: string;

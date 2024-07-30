@@ -3,10 +3,10 @@ import { Row } from "antd";
 import "./CardsPage.scss";
 import { CardItem } from "../../components/CardItem/CardItem";
 import { GetCards } from "../../api/helpers.tsx";
-import { IPokemon } from "../../interfaces/IPokemon.tsx";
+import { PokemonDto } from "../../interfaces/IPokemon.tsx";
 
 export function CardsPage(): React.JSX.Element {
-  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
+  const [pokemons, setPokemons] = useState<PokemonDto[]>([]);
 
   useEffect(() => {
     const loadCards = async () => {
@@ -22,8 +22,8 @@ export function CardsPage(): React.JSX.Element {
       CardsPage
       <div>
         <Row gutter={16}>
-          {pokemons.map((item, index) => (
-            <CardItem key={index} pokemon={item} />
+          {pokemons.map((item) => (
+            <CardItem key={item.id} pokemon={item} />
           ))}
         </Row>
       </div>
