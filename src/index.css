@@ -1,5 +1,4 @@
-#root {
-  width: 100%;
+:root {
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -17,11 +16,15 @@
 }
 
 .container {
-  width: 1280px;
+  width: 1050px;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
+}
+
+* {
+  margin: 0;
 }
