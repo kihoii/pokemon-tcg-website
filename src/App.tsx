@@ -1,17 +1,16 @@
-import "./App.scss";
-import { HomePage } from "./pages/HomePage/HomePage.tsx";
-import { Navbar } from "./components/Navbar/Navbar.tsx";
-import { Route, Routes } from "react-router-dom";
-import { UserRatingPage } from "./pages/UserRatingPage/UserRatingPage.tsx";
-import { CardsPage } from "./pages/CardsPage/CardsPage.tsx";
-import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage.tsx";
-import { SignUpPage } from "./pages/SignUpPage/SignUpPage.tsx";
+import './App.scss';
+import { HomePage } from './pages/HomePage/HomePage.tsx';
+import { Navbar } from './components/Navbar/Navbar.tsx';
+import { Route, Routes } from 'react-router-dom';
+import { UserRatingPage } from './pages/UserRatingPage/UserRatingPage.tsx';
+import { CardsPage } from './pages/CardsPage/CardsPage.tsx';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.tsx';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
 
 function App() {
   return (
     <>
       <Navbar />
-      <HomePage />
 
       <main>
         <Routes>
