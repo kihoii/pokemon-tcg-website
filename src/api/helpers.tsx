@@ -1,10 +1,10 @@
-import { PokemonDto } from "../interfaces/IPokemon.tsx";
-import { BaseUrl, ApiKey } from "./constants.tsx";
+import { PokemonDto } from '../interfaces/IPokemon.tsx';
+import { BaseUrl, ApiKey } from './constants.tsx';
 
 const BaseGet = (url: string) => {
   return fetch(BaseUrl + url, {
-    method: "GET",
-    headers: { "X-Api-Key": ApiKey },
+    method: 'GET',
+    headers: { 'X-Api-Key': ApiKey },
   });
 };
 
@@ -14,7 +14,7 @@ export const GetCards = async (): Promise<PokemonDto[]> => {
     const data = await response.json();
     return data.data as PokemonDto[];
   } catch (error) {
-    console.error("Error fetching cards:", error);
+    console.error('Error fetching cards:', error);
     return [];
   }
 };

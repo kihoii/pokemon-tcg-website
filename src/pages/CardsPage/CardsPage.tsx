@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row } from 'antd';
 import './CardsPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { GetCards } from '../../api/helpers.tsx';
-import { PokemonDto } from '../../interfaces/IPokemon.tsx';
+import { useQuery } from 'react-query';
 
 export function CardsPage(): React.JSX.Element {
-  const [pokemons, setPokemons] = useState<PokemonDto[]>([]);
+  const { data: cards, error, isLoading } = useQuery('cards', GetCards);
 
-  useEffect(() => {
-    const loadCards = async () => {
-      const iPokemons = await GetCards();
-      setPokemons(iPokemons);
-    };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    loadCards();
-  }, []);
+  if (error) {
+    return <div>Error loading cards</div>;
+  }
 
   return (
     <div>
       <div>
         <Row gutter={16}>
-          {pokemons.map((item) => (
-            <CardItem key={item.id} pokemon={item} />
-          ))}
+          {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
         </Row>
       </div>
     </div>
