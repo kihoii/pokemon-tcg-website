@@ -9,7 +9,7 @@ export function CardsPage(): React.JSX.Element {
   const { data: cards, error, isLoading } = useQuery('cards', GetCards);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loader">Loading...</div>;
   }
 
   if (error) {
@@ -17,8 +17,8 @@ export function CardsPage(): React.JSX.Element {
   }
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="cards-page">
         <Row gutter={16}>
           {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
         </Row>
