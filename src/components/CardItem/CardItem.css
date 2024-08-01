@@ -4,12 +4,10 @@
 }
 
 :where(.css-dev-only-do-not-override-1uq9j6g).ant-card {
-  height: fit-content;
-  width: fit-content;
   display: inline;
 }
 
-.ant-col {
+.pokemon-card {
   text-align: center;
   padding: 10px;
   flex: 1 0;

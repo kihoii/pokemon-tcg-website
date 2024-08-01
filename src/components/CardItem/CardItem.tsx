@@ -1,7 +1,7 @@
 import React from 'react';
 import './CardItem.css';
 import { Col, Card } from 'antd';
-import { PokemonDto } from '../../interfaces/IPokemon.tsx';
+import { PokemonDto } from '../../interfaces/PokemonDto.tsx';
 
 const { Meta } = Card;
 

@@ -2,11 +2,11 @@ import React from 'react';
 import { Row } from 'antd';
 import './CardsPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
-import { GetCards } from '../../api/helpers.tsx';
+import { getCards } from '../../api/helpers.tsx';
 import { useQuery } from 'react-query';
 
 export function CardsPage(): React.JSX.Element {
-  const { data: cards, error, isLoading } = useQuery('cards', GetCards);
+  const { data: cards, error, isLoading } = useQuery('cards', getCards);
 
   if (isLoading) {
     return <div className="loader">Loading...</div>;

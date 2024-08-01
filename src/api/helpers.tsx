@@ -1,4 +1,4 @@
-import { PokemonDto } from '../interfaces/IPokemon.tsx';
+import { PokemonDto } from '../interfaces/PokemonDto.tsx';
 import { BaseUrl, ApiKey } from './constants.tsx';
 
 const BaseGet = (url: string) => {
@@ -8,7 +8,7 @@ const BaseGet = (url: string) => {
   });
 };
 
-export const GetCards = async (): Promise<PokemonDto[]> => {
+export const getCards = async (): Promise<PokemonDto[]> => {
   try {
     const response = await BaseGet(`cards`);
     const data = await response.json();

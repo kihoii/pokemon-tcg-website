@@ -12,6 +12,7 @@ export interface PokemonDto {
   artist: string;
   rarity: string;
   flavorText: string;
+  nationalPokedexNumbers: number[];
   images: {
     large: string;
     small: string;
