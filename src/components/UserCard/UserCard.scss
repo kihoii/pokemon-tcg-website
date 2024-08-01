@@ -1,0 +1,47 @@
+.user-rating-card.home-page {
+  width: 240px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #2b2b2b;
+  position: relative;
+  text-align: center;
+
+  img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #2b2b2b;
+    color: #858584;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
+  .name {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+
+  .total-sales {
+    font-size: 16px;
+    line-height: 22px;
+
+    span {
+      color: #858584;
+    }
+  }
+}
+
+.user-rating-card.ranking-page {
+}
