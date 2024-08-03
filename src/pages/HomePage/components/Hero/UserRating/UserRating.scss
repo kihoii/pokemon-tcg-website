@@ -1,0 +1,11 @@
+#ranking-section {
+  button {
+    border-radius: 20px;
+  }
+
+  .users-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}

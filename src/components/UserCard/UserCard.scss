@@ -1,31 +1,33 @@
+@import '../../variables';
+
 .user-rating-card.home-page {
   width: 240px;
   padding: 20px;
   border-radius: 20px;
-  background-color: #2b2b2b;
+  background-color: $blue-color;
   position: relative;
   text-align: center;
 
-  img {
+  .user-avatar {
     height: 120px;
     width: 120px;
     object-fit: cover;
     border-radius: 50%;
   }
 
-  .number {
+  .user-rating {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #2b2b2b;
-    color: #858584;
+    background-color: #ffffff;
+    color: $blue-color;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
   }
 
-  .name {
+  .user-name {
     font-size: 22px;
     line-height: 31px;
     font-weight: 600;
@@ -33,12 +35,12 @@
     margin-bottom: 5px;
   }
 
-  .total-sales {
+  .user-total-cards {
     font-size: 16px;
     line-height: 22px;
 
     span {
-      color: #858584;
+      color: #ffffff;
     }
   }
 }

@@ -6,6 +6,7 @@ export const HomePage = () => {
   return (
     <div id="home-page">
       <Hero />
+      <UserRating />
     </div>
   );
 };

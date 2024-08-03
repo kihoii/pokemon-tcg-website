@@ -1,36 +1,61 @@
-import { useEffect, useState } from 'react';
 import { UserCard, UserCardInfoDto } from '../../../../../components/UserCard/UserCard';
 import './UserRating.scss';
-import { UserDto } from '../../../../../models/UserDto';
 import { Button } from 'antd';
 
 export const UserRating = () => {
-  const [users, setUsers] = useState<UserDto[]>([]);
-
+  //we dont have backend
   const usersRatingList: UserCardInfoDto[] = [
     {
       rating: 1,
-      avatar: '',
+      avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number1',
+      totalCards: 100500,
+      pageTitle: 'home-page',
+    },
+    {
+      rating: 2,
+      avatar: 'src/components/UserCard/avatar-template.jpg',
+      name: 'number2',
+      totalCards: 100500,
+      pageTitle: 'home-page',
+    },
+    {
+      rating: 3,
+      avatar: 'src/components/UserCard/avatar-template.jpg',
+      name: 'number3',
+      totalCards: 100500,
+      pageTitle: 'home-page',
+    },
+    {
+      rating: 4,
+      avatar: 'src/components/UserCard/avatar-template.jpg',
+      name: 'number4',
+      totalCards: 100500,
+      pageTitle: 'home-page',
+    },
+    {
+      rating: 5,
+      avatar: 'src/components/UserCard/avatar-template.jpg',
+      name: 'number5',
       totalCards: 100500,
       pageTitle: 'home-page',
     },
   ];
 
-  setUsers(usersRatingList);
-
   return (
     <div id="ranking-section" className="container">
-      <div className="ranking-headline">
-        <div className="headline">
+      <div className="headline">
+        <div className="ranking-headline">
           <h3>User Rating</h3>
           <p>Checkout Top Users Collections</p>
         </div>
-        <Button type="primary">See All</Button>
+        <Button type="primary" ghost>
+          View Ranking
+        </Button>
       </div>
       <div className="users-container">
-        {users.map((user, index) => (
-          <UserCard key={`artist-${index}`} user={{ rating: index + 1, ...user, pageTitle: 'home-page' }} />
+        {usersRatingList.map((user, index) => (
+          <UserCard key={`artist-${index}`} user={{ ...user }} />
         ))}
       </div>
     </div>
