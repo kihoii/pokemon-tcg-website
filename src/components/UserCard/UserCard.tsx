@@ -17,13 +17,13 @@ export function UserCard({ user }: UserCardInfo): React.JSX.Element {
 
   return (
     <div className={`user-rating-card ${pageTitle}`}>
-      <div className="user-rating">{rating}</div>
-      <img className="user-avatar" src={avatar} alt="user-avatar" />
-      <div className="user-info">
+      <div className="user-card-head">
+        <div className="user-rating">{rating}</div>
+        <img className="user-avatar" src={avatar} alt="user-avatar" />
         <div className="user-name">{name}</div>
-        <div className="user-total-cards">
-          <span>Total Cards:</span> {totalCards}
-        </div>
+      </div>
+      <div className="user-total-cards">
+        <span>Total Cards:</span> {totalCards}
       </div>
     </div>
   );
