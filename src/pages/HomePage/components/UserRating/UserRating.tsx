@@ -1,4 +1,4 @@
-import { UserCard, UserCardInfoDto } from '../../../../../components/UserCard/UserCard';
+import { UserCard, UserCardInfoDto } from '../../../../components/UserCard/UserCard';
 import './UserRating.scss';
 import { Button } from 'antd';
 

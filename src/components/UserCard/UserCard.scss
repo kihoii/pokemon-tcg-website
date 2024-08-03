@@ -1,16 +1,10 @@
 @import '../../variables';
 
-.user-rating-card.home-page {
-  width: 240px;
-  padding: 20px;
+.user-rating-card {
   border-radius: 20px;
   background-color: $blue-color;
-  position: relative;
-  text-align: center;
 
   .user-avatar {
-    height: 120px;
-    width: 120px;
     object-fit: cover;
     border-radius: 50%;
   }
@@ -24,15 +18,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
   }
 
   .user-name {
     font-size: 22px;
     line-height: 31px;
     font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 5px;
   }
 
   .user-total-cards {
@@ -45,5 +36,55 @@
   }
 }
 
-.user-rating-card.ranking-page {
+.user-rating-card.home-page {
+  width: 240px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+
+  .user-avatar {
+    height: 120px;
+    width: 120px;
+  }
+
+  .user-rating {
+    position: absolute;
+  }
+
+  .user-name {
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+}
+
+.user-rating-card.rating-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 20px;
+  width: 510px;
+  height: 84px;
+
+  .user-card-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-avatar {
+    height: 60px;
+    width: 60px;
+  }
+
+  .user-total-cards {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+
+    span {
+      display: none;
+    }
+  }
 }

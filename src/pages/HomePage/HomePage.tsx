@@ -1,5 +1,5 @@
 import { Hero } from './components/Hero/Hero';
-import { UserRating } from './components/Hero/UserRating/UserRating';
+import { UserRating } from './components/UserRating/UserRating';
 import './HomePage.scss';
 
 export const HomePage = () => {
