@@ -2,7 +2,12 @@
 
 #how-it-works {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+
+  .info-cards-block {
+    display: flex;
+    gap: 30px;
+  }
 
   .info-card {
     display: flex;
@@ -12,9 +17,8 @@
 
     width: 330px;
     padding: 30px;
-    background-color: $blue-color;
+    background-color: $gray-background;
     border-radius: 20px;
-    color: white;
 
     .info-card-image {
       background-color: rgb(255, 255, 255);
