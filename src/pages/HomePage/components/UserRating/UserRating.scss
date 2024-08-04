@@ -3,6 +3,16 @@
     border-radius: 20px;
   }
 
+  .ranking-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  button {
+    margin-bottom: 60px;
+  }
+
   .users-container {
     display: flex;
     flex-wrap: wrap;

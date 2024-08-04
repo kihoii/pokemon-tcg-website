@@ -47,8 +47,8 @@ export const UserRating = () => {
 
   return (
     <section id="ranking-section" className="container">
-      <div className="headline">
-        <div className="ranking-headline">
+      <div className="ranking-headline">
+        <div className="headline">
           <h3>User Rating</h3>
           <p>Checkout Top Users Collections</p>
         </div>
