@@ -1,4 +1,7 @@
-import { UserCard, UserCardInfoDto } from '../../../../components/UserCard/UserCard';
+import {
+  UserCard,
+  UserCardInfoDto,
+} from '../../../../components/UserCard/UserCard';
 import './UserRating.scss';
 import { Button } from 'antd';
 
@@ -43,7 +46,7 @@ export const UserRating = () => {
   ];
 
   return (
-    <div id="ranking-section" className="container">
+    <section id="ranking-section" className="container">
       <div className="headline">
         <div className="ranking-headline">
           <h3>User Rating</h3>
@@ -58,6 +61,6 @@ export const UserRating = () => {
           <UserCard key={`artist-${index}`} user={{ ...user }} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
