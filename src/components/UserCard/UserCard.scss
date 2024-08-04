@@ -2,7 +2,7 @@
 
 .user-rating-card {
   border-radius: 20px;
-  background-color: $blue-color;
+  background-color: $gray-background;
 
   .user-avatar {
     object-fit: cover;
@@ -13,8 +13,8 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #ffffff;
-    color: $blue-color;
+    background-color: $blue-color;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
     line-height: 22px;
 
     span {
-      color: #ffffff;
+      color: $blue-color;
     }
   }
 }
