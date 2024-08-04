@@ -12,35 +12,30 @@ export const UserRatingPage = () => {
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number1',
       totalCards: 100500,
-      pageTitle: 'rating-page',
     },
     {
       rating: 2,
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number2',
       totalCards: 100500,
-      pageTitle: 'rating-page',
     },
     {
       rating: 3,
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number3',
       totalCards: 100500,
-      pageTitle: 'rating-page',
     },
     {
       rating: 4,
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number4',
       totalCards: 100500,
-      pageTitle: 'rating-page',
     },
     {
       rating: 5,
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number5',
       totalCards: 100500,
-      pageTitle: 'rating-page',
     },
   ];
 

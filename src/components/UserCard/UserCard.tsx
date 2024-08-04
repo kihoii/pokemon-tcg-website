@@ -9,14 +9,13 @@ export interface UserCardInfoDto {
   avatar: string;
   name: string;
   totalCards: number;
-  pageTitle: string;
 }
 
 export function UserCard({ user }: UserCardInfo): React.JSX.Element {
-  const { rating, avatar, name, totalCards, pageTitle } = user;
+  const { rating, avatar, name, totalCards } = user;
 
   return (
-    <div className={`user-rating-card ${pageTitle}`}>
+    <div className={'user-rating-card'}>
       <div className="user-card-head">
         <div className="user-rating">{rating}</div>
         <img className="user-avatar" src={avatar} alt="user-avatar" />
