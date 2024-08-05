@@ -1,10 +1,11 @@
-import { useLocation } from 'react-router-dom';
-import { UserCard, UserCardInfoDto } from '../../components/UserCard/UserCard';
-import './UserRatingPage.scss';
-import { RatingHeader } from './components/RatingHeader/RatingHeader';
+import {
+  UserCard,
+  UserCardInfoDto,
+} from '../../../../components/UserCard/UserCard';
+import './UserRating.scss';
+import { Button } from 'antd';
 
-export const UserRatingPage = () => {
-  console.log(useLocation().pathname);
+export const UserRating = () => {
   //we dont have backend
   const usersRatingList: UserCardInfoDto[] = [
     {
@@ -40,18 +41,21 @@ export const UserRatingPage = () => {
   ];
 
   return (
-    <div id="rating-page">
-      <div className="page-headline container">
-        <h1>User Rating</h1>
-        <p>Checkout Top Users Collections</p>
+    <section id="ranking-section" className="container">
+      <div className="ranking-headline">
+        <div className="headline">
+          <h3>User Rating</h3>
+          <p>Checkout Top Users Collections</p>
+        </div>
+        <Button type="primary" ghost>
+          View Ranking
+        </Button>
       </div>
-      <div className="users-container container">
-        <RatingHeader />
-        <RatingHeader />
+      <div className="users-container">
         {usersRatingList.map((user, index) => (
           <UserCard key={`artist-${index}`} user={{ ...user }} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
