@@ -2,7 +2,7 @@ import './PokemonPage.scss';
 import { useQuery } from 'react-query';
 import { getCardById } from '../../api/helpers.tsx';
 import { useParams } from 'react-router-dom';
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
 
 const { Meta } = Card;
 
@@ -29,13 +29,13 @@ export function PokemonPage(): React.JSX.Element {
           className="pokemon-card"
           title={card?.name}
           bordered={false}
-          cover={
-            <img className="img" alt={card?.id} src={card?.images.large} />
-          }
+          cover={<img alt={card?.id} src={card?.images.large} />}
         >
           {card?.rarity}
           <Meta title={card?.artist} description={card?.flavorText} />
         </Card>
+        <Button type="primary">Add to Wishlist</Button>
+        <Button type="primary">Buy Card</Button>
       </div>
     </div>
   );
