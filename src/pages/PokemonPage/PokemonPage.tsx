@@ -24,7 +24,7 @@ export function PokemonPage(): React.JSX.Element {
 
   return (
     <div className="container">
-      <div className="cards-page">
+      <div className="card-page">
         <Card
           className="pokemon-card"
           title={card?.name}
