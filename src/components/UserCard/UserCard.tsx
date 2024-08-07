@@ -7,10 +7,8 @@ interface UserCardInfo {
   user: UserResponse;
 }
 
-export function UserCard(props: UserCardInfo) {
-  const { avatar, name, cards } = props.user;
-  const rating = props.rating;
-  const type = props.type;
+export function UserCard({ type, rating, user }: UserCardInfo) {
+  const { avatar, name, cards } = user;
 
   let totalCards: number;
   if (!cards) {
