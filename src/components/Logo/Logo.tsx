@@ -5,7 +5,7 @@ import logo from './assets/logo.svg';
 export const Logo = () => {
   return (
     <Link to="">
-      <img className="logo" src={logo} alt="Logo" />
+      <img className="logo-img" src={logo} alt="Logo" />
     </Link>
   );
 };

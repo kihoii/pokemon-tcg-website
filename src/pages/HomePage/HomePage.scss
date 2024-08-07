@@ -1,0 +1,23 @@
+#home-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .headline {
+    margin-bottom: 60px;
+
+    h3 {
+      font-size: 38px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 22px;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    padding: 19px 50px;
+  }
+}
