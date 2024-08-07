@@ -9,10 +9,10 @@ export const HomePage = () => {
   return (
     <div id="home-page">
       <Hero />
+      <UserRating />
       <MiddleBanner />
       <HowItWorks />
       <SubscribeWidget />
-      <UserRating />
     </div>
   );
 };

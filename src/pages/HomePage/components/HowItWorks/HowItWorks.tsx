@@ -15,29 +15,26 @@ export const HowItWorks = () => {
           <div className="info-card-image">
             <img src={cart} alt="" />
           </div>
-          <div className="info-card-title">Покупай Новые Карточки</div>
+          <div className="info-card-title">Buy New Cards</div>
           <div className="info-card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-            necessitatibus molestiae distinctio aliquid voluptatem
+            Search for cards that you don't have
           </div>
         </div>
         <div className="info-card">
           <div className="info-card-image">
             <img src={folder} alt="" />
           </div>
-          <div className="info-card-title">Отслеживай Свою Коллекцию</div>
+          <div className="info-card-title">Keep Track Of Your Collection</div>
           <div className="info-card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            See the cards you already have or you wish about
           </div>
         </div>
         <div className="info-card">
           <div className="info-card-image">
             <img src={chat} alt="" />
           </div>
-          <div className="info-card-title">Узнавай Новости</div>
-          <div className="info-card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </div>
+          <div className="info-card-title">Find Out The News</div>
+          <div className="info-card-text">Latest news from Pokemon world</div>
         </div>
       </div>
     </section>

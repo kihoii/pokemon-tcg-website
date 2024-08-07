@@ -1,21 +1,26 @@
+import { UserResponse } from '../../models/ResponseModels/UserResponse';
 import './UserCard.scss';
 
 interface UserCardInfo {
-  user: UserCardInfoDto;
-}
-
-export interface UserCardInfoDto {
+  type: string;
   rating: number;
-  avatar: string;
-  name: string;
-  totalCards: number;
+  user: UserResponse;
 }
 
-export function UserCard({ user }: UserCardInfo): React.JSX.Element {
-  const { rating, avatar, name, totalCards } = user;
+export function UserCard(props: UserCardInfo) {
+  const { avatar, name, cards } = props.user;
+  const rating = props.rating;
+  const type = props.type;
+
+  let totalCards: number;
+  if (!cards) {
+    totalCards = 0;
+  } else {
+    totalCards = cards.length;
+  }
 
   return (
-    <div className={'user-rating-card'}>
+    <div className={`user-rating-card ${type}`}>
       <div className="user-card-head">
         <div className="user-rating">{rating}</div>
         <img className="user-avatar" src={avatar} alt="user-avatar" />

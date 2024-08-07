@@ -18,7 +18,7 @@ export const SubscribeWidget = () => {
             straight to your inbox.
           </p>
         </div>
-        <SubscribeInput />
+        <SubscribeInput name="widget-email" />
       </div>
     </section>
   );

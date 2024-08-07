@@ -44,7 +44,7 @@ export const Footer = () => {
               Get exclusive promotions & updates <br />
               straight to your inbox.
             </div>
-            <SubscribeInput />
+            <SubscribeInput name="footer-email" />
           </div>
         </div>
       </div>
