@@ -1,42 +1,51 @@
-import {
-  UserCard,
-  UserCardInfoDto,
-} from '../../../../components/UserCard/UserCard';
+import { UserCard } from '../../../../components/UserCard/UserCard';
+import { UserResponse } from '../../../../models/ResponseModels/UserResponse';
 import './UserRating.scss';
 import { Button } from 'antd';
 
 export const UserRating = () => {
   //we dont have backend
-  const usersRatingList: UserCardInfoDto[] = [
+  const usersRatingList: UserResponse[] = [
     {
-      rating: 1,
+      id: 1,
       avatar: 'src/components/UserCard/avatar-template.jpg',
       name: 'number1',
-      totalCards: 100500,
     },
     {
-      rating: 2,
+      id: 1,
       avatar: 'src/components/UserCard/avatar-template.jpg',
-      name: 'number2',
-      totalCards: 100500,
+      name: 'number1',
+      cards: [
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+      ],
     },
     {
-      rating: 3,
+      id: 1,
       avatar: 'src/components/UserCard/avatar-template.jpg',
-      name: 'number3',
-      totalCards: 100500,
+      name: 'number1',
+      cards: [
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+      ],
     },
     {
-      rating: 4,
+      id: 1,
       avatar: 'src/components/UserCard/avatar-template.jpg',
-      name: 'number4',
-      totalCards: 100500,
+      name: 'number1',
+      cards: [
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+      ],
     },
     {
-      rating: 5,
+      id: 1,
       avatar: 'src/components/UserCard/avatar-template.jpg',
-      name: 'number5',
-      totalCards: 100500,
+      name: 'number1',
+      cards: [
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+        { id: '1', name: 'd', image: 'd', rarity: 'd' },
+      ],
     },
   ];
 
@@ -53,7 +62,12 @@ export const UserRating = () => {
       </div>
       <div className="users-container">
         {usersRatingList.map((user, index) => (
-          <UserCard key={`artist-${index}`} user={{ ...user }} />
+          <UserCard
+            key={`artist-${index}`}
+            type="short-card"
+            rating={index + 1}
+            user={{ ...user }}
+          />
         ))}
       </div>
     </section>

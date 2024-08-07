@@ -1,11 +1,11 @@
-@import "../../variables";
+@import '../../variables';
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: rgb(226, 226, 226);
+  background-color: $gray-background;
 
   nav {
     display: flex;
@@ -17,5 +17,9 @@
       text-decoration: none;
       color: $blue-color;
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 }
