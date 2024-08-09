@@ -1,0 +1,24 @@
+.ant-col {
+  padding: 8px;
+}
+
+.ant-card {
+  height: 100%;
+  padding: 0 22px;
+}
+
+:where(.css-dev-only-do-not-override-1uq9j6g).ant-card {
+  display: inline;
+}
+
+.pokemon-card {
+  text-align: center;
+  padding: 10px;
+  flex: 1 0;
+
+  display: block;
+}
+
+.ant-card-head-title {
+  font-size: 24px;
+}

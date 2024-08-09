@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: $gray-background;
+
+  nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-size: 16px;
+
+    .nav-link {
+      text-decoration: none;
+      color: $blue-color;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

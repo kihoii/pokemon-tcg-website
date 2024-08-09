@@ -1,0 +1,20 @@
+@import '../../../../variables';
+
+.rating-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  color: $blue-color;
+
+  width: 510px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: solid 2px $blue-color;
+
+  display: flex;
+  justify-content: space-between;
+
+  .left {
+    display: flex;
+    gap: 20px;
+  }
+}

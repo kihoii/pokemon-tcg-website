@@ -1,0 +1,92 @@
+@import '../../variables';
+
+.user-rating-card {
+  border-radius: 20px;
+  background-color: $gray-background;
+
+  .user-avatar {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .user-rating {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $blue-color;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-name {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 600;
+  }
+
+  .user-total-cards {
+    font-size: 16px;
+    line-height: 22px;
+
+    span {
+      color: $blue-color;
+    }
+  }
+}
+
+.user-rating-card.short-card {
+  width: 240px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+
+  .user-avatar {
+    height: 120px;
+    width: 120px;
+  }
+
+  .user-rating {
+    position: absolute;
+  }
+
+  .user-name {
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+}
+
+.user-rating-card.long-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 20px;
+  width: 510px;
+  height: 84px;
+
+  .user-card-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-avatar {
+    height: 60px;
+    width: 60px;
+  }
+
+  .user-total-cards {
+    display: flex;
+    align-items: center;
+    color: $blue-color;
+    margin-right: 50px;
+    font-weight: 600;
+
+    span {
+      display: none;
+    }
+  }
+}
