@@ -82,7 +82,7 @@ export const SignUpPage = ({ name }: { name: string }) => {
                     </FormItem>
 
 
-                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Form.Item >
                     <Button className='button' type="primary" htmlType="submit">
                         Зарегестрироваться
                     </Button>
