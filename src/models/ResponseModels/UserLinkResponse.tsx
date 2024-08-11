@@ -1,6 +1,6 @@
-import { UserLinkTypes } from '../../enums/UserLinkTypes';
+import { UserLinkTypeResponse } from './UserLinkTypeResponse';
 
 export interface UserLinkResponse {
-  type: UserLinkTypes;
+  type: UserLinkTypeResponse;
   link: string;
 }

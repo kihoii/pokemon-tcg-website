@@ -1,13 +1,13 @@
-import { CardShortResponse } from './CardShortResponse';
+import { UserCardResponse } from './UserCardResponse';
+import { UserFollowerResponse } from './UserFollowerResponse';
 import { UserLinkResponse } from './UserLinkResponse';
 
 export interface UserResponse {
   id: number;
-  name: string;
+  name?: string;
   bio?: string;
   avatar?: string;
   links?: UserLinkResponse[];
-  followersTotal?: number;
-  cards?: CardShortResponse[];
-  wishlist?: CardShortResponse[];
+  followers?: UserFollowerResponse[];
+  cards?: UserCardResponse[]; //owned + wished
 }
