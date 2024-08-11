@@ -7,6 +7,25 @@
     .right-container{
         padding-top: 100px;
         padding-left: 60px;
+
+        h1 {
+            font-size: 67px;
+            font-weight: 600;
+          }
+
+          h2 {
+            font-size: 22px;
+          }
+
+        .text{
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        Input{
+            border-color: black;
+            color: red;
+        }
     }
 
     .grey{
@@ -15,7 +34,6 @@
     }
 
     button{
-        background-color: rgb(89, 87, 87);
         width: 200px;
         height: 50px;
         font-size: 15px;
@@ -23,5 +41,10 @@
 
     h1{
         font-size: 40px;
+    }
+
+    .image-pokemon{
+        max-width: 700px;
+        max-height: 700px;
     }
 }

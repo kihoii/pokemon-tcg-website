@@ -70,7 +70,7 @@ export const UserRatingPage = () => {
             type="long-card"
             rating={index + 1}
             user={{ ...user }}
-          />
+          /> 
         ))}
       </div>
     </div>

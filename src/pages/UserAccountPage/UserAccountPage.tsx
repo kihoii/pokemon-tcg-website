@@ -1,5 +1,5 @@
 import  './UserAccountPage.scss';
-import headimg  from './header.png';
+import headimg  from './pp.jpg';
 import avatar  from './avatar.png';
 import {
     TwitterOutlined,
@@ -25,33 +25,35 @@ export const UserAccountPage = () => {
                     <h2>250k+</h2>
                     <h2>50+</h2>
                     <h2>3000+</h2>
-                    <h3>Карточек</h3>
-                    <h3>Коллекций(??)</h3>
-                    <h3>Подписчиков</h3>
+                    <h3>Cards</h3>
+                    <h3>Collections</h3>
+                    <h3>Subscribers</h3>
                 </div>
                 <div className='mrg'>
-                    <h3 className='grey'>Описание</h3>
+                    <h3 className='grey'>Description</h3>
                     <h3>The internet's friendliest designer kid.</h3>
                 </div>
                 <div className='mrg'>
-                    <h3 className='grey' style={{  marginBottom: '10px'}}>Ссылки</h3>
+                    <h3 className='grey' style={{  marginBottom: '10px'}}>Links</h3>
                     <GlobalOutlined style={{ fontSize: '32px', marginRight: '20px'}}/>
                     <TwitterOutlined style={{ fontSize: '32px', marginRight: '20px' }}/>
                     <YoutubeOutlined style={{ fontSize: '32px' }}/>
                 </div>
                 </div>
                 <div className='right-container'>
-                    <Button type="primary">Подписаться</Button>
+                    <Button type="primary" className="sub-button" href="/sign-up">
+                    Subscribe
+                        </Button>
                 </div>
             </section>
             <section id="sort-section">
             <div className='buttons-cotainer'>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    <Button type="text"> <h2>Карточки</h2></Button>
+                    <Button type="text"> <h2>Cards</h2></Button>
                     <div className="circle">25</div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                    <Button type="text"><h2>Коллекции</h2></Button>
+                    <Button type="text"><h2>Collections</h2></Button>
                     <div className="circle">36</div>
                 </div>
             </div>

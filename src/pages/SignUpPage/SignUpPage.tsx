@@ -1,7 +1,13 @@
 import './SignUpPage.scss';
-import placeholder  from './Placeholder.png';
+import placeholder  from './Ivysaur.png';
 import type { FormProps } from 'antd';
 import { Button, Form, Input } from 'antd';
+
+
+
+import { FormItem } from 'react-hook-form-antd';
+import { useForm } from 'react-hook-form';
+
 
 type FieldType = {
   username?: string;
@@ -19,53 +25,62 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 };
 
 
-export const SignUpPage = () => {
+export const SignUpPage = ({ name }: { name: string }) => {
+    const { control, handleSubmit } = useForm();
     return (
         <div> 
             <section id="main-section">
                 <div className='left-container'>
-                <img src={placeholder} alt="placeholder" />
+                <img className="image-pokemon" src={placeholder} alt="placeholder" />
                 </div>
                 <div className='right-container'>
-                    <h1>Создать аккаунт</h1>
-                    <h3 className='grey'>Добро пожаловать! Введите ваши данные и начните собирать свою коллекцию покемонов! Надеемся вам понравится</h3>
+                    <h1>Create an account</h1>
+                    <h2 className='text'>Welcome! Enter your details and start collecting your Pokemon collection! We hope you enjoy it!</h2>
                     <Form
-                    name="basic"
+                    name={name}
+                    onFinish={handleSubmit((data) => {
+                    console.log(data);
+                    })}
                     labelCol={{ span: 8 }}
                     wrapperCol={{ span: 16 }}
                     style={{ maxWidth: 600 , borderRadius: 120}}
                     initialValues={{ remember: true }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
-                    <Form.Item<FieldType>
-                    name="username"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
-                    >
-                    <Input placeholder="Username"/>
-                    </Form.Item>
 
-                    <Form.Item<FieldType>
-                    name="email"
-                    rules={[{ required: true, message: 'Please input your Email Address!' }]}
-                    >
-                    <Input placeholder="Email Address"/>
-                    </Form.Item>
+                    <FormItem control={control} name="username" label="">
+                    <Input
+                        type="Username"
+                        placeholder="Please input your username!"
+                        autoComplete="on"
+                    />
+                    </FormItem>
 
-                    <Form.Item<FieldType>
-                    name="password"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
-                    >
-                    <Input.Password placeholder="Password"/>
-                    </Form.Item>
+                    <FormItem control={control} name="email" label="">
+                    <Input
+                        type="email"
+                        placeholder="Please input your Email Address!"
+                        autoComplete="on"
+                    />
+                    </FormItem>
 
-                    <Form.Item<FieldType>
-                    name="passwordConfirm"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
-                    >
-                    <Input.Password placeholder="Confirm Password"/>
-                    </Form.Item>
+                    <FormItem control={control} name="password" label="">
+                    <Input
+                        type=""
+                        placeholder="Please input your password!"
+                        autoComplete="on"
+                    />
+                    </FormItem>
+
+
+                    <FormItem control={control} name="passwordConfirm" label="">
+                    <Input
+                        type="password"
+                        placeholder="Please input your password!"
+                        autoComplete="on"
+                    />
+                    </FormItem>
+
 
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button className='button' type="primary" htmlType="submit">
@@ -73,6 +88,8 @@ export const SignUpPage = () => {
                     </Button>
                     </Form.Item>
                 </Form>
+
+                
                 </div>
                 
             </section>
