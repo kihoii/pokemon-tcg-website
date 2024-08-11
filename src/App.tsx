@@ -8,6 +8,9 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.tsx';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
 import { Footer } from './components/Footer/Footer.tsx';
 import { PokemonPage } from './pages/PokemonPage/PokemonPage.tsx';
+import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
+
+
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
           <Route path="market" element={<CardsPage />} />
           <Route path="pokemon/:id" element={<PokemonPage />} />
           <Route path="sign-up" element={<SignUpPage />} />
+          <Route path="user" element={<UserAccountPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
