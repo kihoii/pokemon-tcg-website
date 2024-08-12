@@ -8,9 +8,14 @@ const baseGet = (url: string) => {
   });
 };
 
-export const getCards = async (): Promise<PokemonDto[]> => {
+export const getCards = async (
+  page: number,
+  pageSize: number
+): Promise<PokemonDto[]> => {
   try {
-    const response = await baseGet(`cards`);
+    const response = await baseGet(
+      `cards?page=` + page + `&pageSize=` + pageSize
+    );
     const data = await response.json();
     return data.data as PokemonDto[];
   } catch (error) {
