@@ -1,6 +1,4 @@
-import { UserRequest } from './UserRequest';
-
 export interface UserCardRequest {
-  user: UserRequest;
+  userId: number;
   cardId: number;
 }

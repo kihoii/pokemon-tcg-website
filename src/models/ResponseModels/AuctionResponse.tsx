@@ -3,7 +3,7 @@ import { UserResponse } from './UserResponse';
 
 export interface AuctionResponse {
   id: number;
-  owner?: UserResponse;
+  owner?: UserResponse; // id + name
   card?: CardShortResponse;
   createdAt?: string;
   startPrice?: number;
