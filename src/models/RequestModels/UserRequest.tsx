@@ -1,3 +1,4 @@
+import { AuctionRequest } from './AuctionRequest';
 import { UserLinkRequest } from './UserLinkRequest';
 
 export interface UserRequest {
@@ -6,4 +7,5 @@ export interface UserRequest {
   bio?: string;
   avatar?: string;
   links?: UserLinkRequest[];
+  auctions?: AuctionRequest[];
 }
