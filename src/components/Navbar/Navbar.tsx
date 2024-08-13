@@ -17,6 +17,9 @@ export const Navbar = () => {
         <NavLink className="nav-link" to="/wallet">
           Connect a wallet
         </NavLink>
+        <NavLink className="nav-link" to="/auction">
+        Auction
+        </NavLink>
         <Button type="primary" href="/sign-up">
           Sign up
         </Button>
