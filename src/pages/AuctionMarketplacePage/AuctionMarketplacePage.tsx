@@ -2,108 +2,73 @@ import React from 'react';
 import './AuctionMarketplacePage.scss';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
+import { auctionsMock } from '../../mock/AuctionsMock';
+import { AuctionResponse } from '../../models/ResponseModels/AuctionResponse';
 
-const columns: TableColumnsType<any> = [
+const auctions = auctionsMock.map((x) => ({
+  key: x.id,
+  cardName: x.card?.id,
+  currentPrice: x.currentPrice,
+  minStep: x.minStep,
+  createdAt: x.createdAt,
+  activeTime: x.activeTime,
+}));
+
+const nameFilters = auctions.map((x) => ({
+  text: x.cardName,
+  value: x.cardName,
+}));
+
+const columns: TableColumnsType<AuctionResponse> = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    showSorterTooltip: { target: 'full-header' },
-    filters: [
-      {
-        text: 'Joe',
-        value: 'Joe',
-      },
-      {
-        text: 'Jim',
-        value: 'Jim',
-      },
-      {
-        text: 'Submenu',
-        value: 'Submenu',
-        children: [
-          {
-            text: 'Green',
-            value: 'Green',
-          },
-          {
-            text: 'Black',
-            value: 'Black',
-          },
-        ],
-      },
-    ],
-    // specify the condition of filtering result
-    // here is that finding the name started with `value`
-    onFilter: (value, record) => record.name.indexOf(value as string) === 0,
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ['descend'],
+    key: 'card',
+    title: 'Card',
+    dataIndex: 'cardName',
+    filters: nameFilters,
+    onFilter: (value, record) =>
+      record.cardName?.indexOf(value as string) === 0,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
+    key: 'currentPrice',
+    title: 'Price',
+    dataIndex: 'currentPrice',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    filters: [
-      {
-        text: 'London',
-        value: 'London',
-      },
-      {
-        text: 'New York',
-        value: 'New York',
-      },
-    ],
-    onFilter: (value, record) => record.address.indexOf(value as string) === 0,
+    key: 'step',
+    title: 'Step',
+    dataIndex: 'minStep',
+    defaultSortOrder: 'ascend',
+    sorter: (a, b) => a.minStep - b.minStep,
+  },
+  {
+    key: 'activeTime',
+    title: 'Time left',
+    dataIndex: 'activeTime',
+    defaultSortOrder: 'ascend',
+    sorter: (a, b) => a.activeTime - b.activeTime,
+  },
+  {
+    key: 'createdAt',
+    title: 'Created Time',
+    dataIndex: 'createdAt',
   },
 ];
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  },
-];
-
-const onChange: TableProps<any>['onChange'] = (
+const onChange: TableProps<AuctionResponse>['onChange'] = (
   pagination,
   filters,
   sorter,
   extra
-) => {
-  console.log('params', pagination, filters, sorter, extra);
-};
+) => {};
 
 export function AuctionMarketplacePage(): React.JSX.Element {
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      rowKey={(x) => x.id}
+      dataSource={auctions}
       onChange={onChange}
-      showSorterTooltip={{ target: 'sorter-icon' }}
+      showSorterTooltip={{ target: 'full-header' }}
     />
   );
 }

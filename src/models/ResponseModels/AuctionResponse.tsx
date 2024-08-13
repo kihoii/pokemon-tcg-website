@@ -5,10 +5,12 @@ export interface AuctionResponse {
   id: number;
   owner?: UserResponse; // id + name
   card?: CardShortResponse;
+  cardName?: string;
   createdAt?: string;
   startPrice?: number;
-  timeActive?: number; //hours
-  minStep?: number;
+  currentPrice?: number;
+  activeTime: number; //hours
+  minStep: number;
   isAborted?: boolean;
   isFinished?: boolean;
 }
