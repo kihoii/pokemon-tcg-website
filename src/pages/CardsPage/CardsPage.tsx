@@ -1,15 +1,18 @@
 import React from 'react';
-import { useState } from 'react';
 import { Row, Pagination } from 'antd';
 import type { PaginationProps } from 'antd';
 import './CardsPage.scss';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { getCards } from '../../api/helpers.tsx';
 import { useQuery } from 'react-query';
+import { changePage, changePageSize } from '../../store/cardsPageSlice.tsx';
+import { useAppSelector, useAppDispatch } from '../../store/hooks.tsx';
 
 export function CardsPage(): React.JSX.Element {
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(8);
+  const page = useAppSelector((state) => state.cardsPage.page);
+  const pageSize = useAppSelector((state) => state.cardsPage.pageSize);
+  const dispatch = useAppDispatch();
+
   const {
     data: cards,
     error,
@@ -17,8 +20,8 @@ export function CardsPage(): React.JSX.Element {
   } = useQuery(['cards', page, pageSize], () => getCards(page, pageSize));
 
   const onChange: PaginationProps['onChange'] = (pageNumber, pageSize) => {
-    setPage(pageNumber);
-    setPageSize(pageSize);
+    dispatch(changePage(pageNumber));
+    dispatch(changePageSize(pageSize));
   };
 
   if (isLoading) {

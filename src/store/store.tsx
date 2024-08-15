@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import cardsPageReducer from './cardsPageSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { cardsPage: cardsPageReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
