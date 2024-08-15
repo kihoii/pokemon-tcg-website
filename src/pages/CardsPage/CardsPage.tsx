@@ -30,20 +30,18 @@ export function CardsPage(): React.JSX.Element {
   }
 
   return (
-    <div className="container">
-      <div className="cards-page">
-        <Row gutter={16}>
-          {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
-        </Row>
-        <Pagination
-          showQuickJumper
-          defaultCurrent={page}
-          pageSize={pageSize}
-          pageSizeOptions={[8, 16, 20]}
-          total={250}
-          onChange={onChange}
-        />
-      </div>
+    <div className="cards-page">
+      <Row gutter={16}>
+        {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
+      </Row>
+      <Pagination
+        showQuickJumper
+        defaultCurrent={page}
+        pageSize={pageSize}
+        pageSizeOptions={[8, 16, 20]}
+        total={250}
+        onChange={onChange}
+      />
     </div>
   );
 }

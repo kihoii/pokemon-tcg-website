@@ -23,8 +23,8 @@ export function PokemonPage(): React.JSX.Element {
   }
 
   return (
-    <div className="container">
-      <div className="card-page">
+    <div className="card-page">
+      <div className="card-page-container">
         <Card
           className="pokemon-card"
           title={card?.name}

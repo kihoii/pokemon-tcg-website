@@ -1,6 +1,22 @@
 .card-page {
-  padding: 0 326px;
+  margin: 20px 0;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+
+  .card-page-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    .ant-card-cover {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: auto;
+        height: 50vh;
+      }
+    }
+  }
 }
