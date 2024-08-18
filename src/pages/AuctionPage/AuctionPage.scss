@@ -1,0 +1,22 @@
+.auction-section {
+  .auction-content {
+    display: flex;
+    gap: 15px;
+
+    .auction-data {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .data-row {
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .bet-section {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+  }
+}
