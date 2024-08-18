@@ -53,6 +53,10 @@ export function AuctionPage(): React.JSX.Element {
             </div>
 
             <div className="data-row">
+              Owner: <b>{auction.owner?.name ?? 'unknown'}</b>
+            </div>
+
+            <div className="data-row">
               Initial cost: <b>{auction.startPrice}</b>
             </div>
 
