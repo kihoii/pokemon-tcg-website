@@ -69,6 +69,13 @@ export function AuctionMarketplacePage(): React.JSX.Element {
       dataSource={auctions}
       onChange={onChange}
       showSorterTooltip={{ target: 'full-header' }}
+      onRow={(auction, rowIndex) => {
+        return {
+          onClick: () => {
+            window.location.assign('/auction/' + auction.id);
+          },
+        };
+      }}
     />
   );
 }
