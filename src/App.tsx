@@ -9,8 +9,7 @@ import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
 import { Footer } from './components/Footer/Footer.tsx';
 import { PokemonPage } from './pages/PokemonPage/PokemonPage.tsx';
 import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
-
-
+import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
 
 function App() {
   return (
@@ -25,6 +24,7 @@ function App() {
           <Route path="pokemon/:id" element={<PokemonPage />} />
           <Route path="sign-up" element={<SignUpPage />} />
           <Route path="user" element={<UserAccountPage />} />
+          <Route path="auction-market" element={<AuctionMarketplacePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
