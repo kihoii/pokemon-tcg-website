@@ -1,8 +1,10 @@
 import './AuctionPage.scss';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-import { Buy } from './components/BuyComponent/Buy.tsx';
-import { Sale } from './components/SaleComponent/Sale.tsx';
+import { ActiveBets } from './components/ActiveBets.tsx';
+import { Purchases } from './components/Purchases.tsx';
+import { History } from './components/History.tsx';
+
 
 const onChange = (key: string) => {
     console.log(key);
@@ -11,13 +13,18 @@ const onChange = (key: string) => {
 const items: TabsProps['items'] = [
     {
         key: '1',
-        label: 'Buy card',
-        children: <Buy />,
+        label: 'Active bets',
+        children: <ActiveBets />,
     },
     {
         key: '2',
-        label: 'Sale card',
-        children: <Sale />,
+        label: 'Purchases',
+        children: <Purchases />,
+    },
+    {
+        key: '3',
+        label: 'History',
+        children: <History />,
     },
     ];
 
