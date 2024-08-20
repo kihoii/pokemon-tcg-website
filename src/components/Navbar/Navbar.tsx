@@ -2,6 +2,7 @@ import { Logo } from '../Logo/Logo';
 import './Navbar.scss';
 import { Button } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { WishList } from '../WishList/WishList';
 
 export const Navbar = () => {
   return (
@@ -23,6 +24,7 @@ export const Navbar = () => {
         <Button type="primary" href="/sign-up">
           Sign up
         </Button>
+        <WishList />
       </nav>
     </div>
   );
