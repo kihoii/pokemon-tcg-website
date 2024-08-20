@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.auction-status {
+  width: auto;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  color: white;
+}
+
+.finished-auction {
+  background-color: $green-color;
+}
+
+.active-auction {
+  background-color: $blue-color;
+}
+
+.aborted-auction {
+  background-color: $yellow-color;
+}
