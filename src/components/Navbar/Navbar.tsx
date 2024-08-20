@@ -21,10 +21,10 @@ export const Navbar = () => {
         <NavLink className="nav-link" to="/wallet">
           Connect a wallet
         </NavLink>
+        <WishList />
         <Button type="primary" href="/sign-up">
           Sign up
         </Button>
-        <WishList />
       </nav>
     </div>
   );
