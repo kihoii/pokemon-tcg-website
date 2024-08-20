@@ -1,13 +1,16 @@
-import { Logo } from "../Logo/Logo";
-import "./Navbar.scss";
-import { Button } from "antd";
-import { NavLink } from "react-router-dom";
+import { Logo } from '../Logo/Logo';
+import './Navbar.scss';
+import { Button } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
     <div className="navbar">
       <Logo />
       <nav>
+        <NavLink className="nav-link" to="/auction-market">
+          Auctions
+        </NavLink>
         <NavLink className="nav-link" to="/market">
           Marketplace
         </NavLink>
