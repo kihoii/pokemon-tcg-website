@@ -11,7 +11,7 @@ export const WishList: React.FC = () => {
   }
 
   return (
-    <a href="#">
+    <a href="/wish-list">
       <Badge count={count}>
         <Avatar src={heart} size="large" />
       </Badge>
