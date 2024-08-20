@@ -6,7 +6,7 @@ import { auctionsMock } from '../../mock/AuctionsMock';
 import { AuctionResponse } from '../../models/ResponseModels/AuctionResponse';
 
 const auctions = auctionsMock.map((x) => ({
-  key: x.id,
+  id: x.id,
   cardName: x.card?.id,
   currentPrice: x.currentPrice,
   minStep: x.minStep,
@@ -69,6 +69,13 @@ export function AuctionMarketplacePage(): React.JSX.Element {
       dataSource={auctions}
       onChange={onChange}
       showSorterTooltip={{ target: 'full-header' }}
+      onRow={(auction, rowIndex) => {
+        return {
+          onClick: () => {
+            window.location.assign('/auction/' + auction.id);
+          },
+        };
+      }}
     />
   );
 }

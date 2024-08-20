@@ -3,7 +3,7 @@ import { AuctionResponse } from '../models/ResponseModels/AuctionResponse';
 export const auctionsMock: AuctionResponse[] = [
   {
     id: 1,
-    owner: { id: 1 },
+    owner: { id: 1, name: 'Peter Pettigrew' },
     card: { id: 'xy5-1' },
     cardName: 'xy5-1',
     createdAt: '2024-08-12 16:00:00',
@@ -16,7 +16,7 @@ export const auctionsMock: AuctionResponse[] = [
   },
   {
     id: 2,
-    owner: { id: 1 },
+    owner: { id: 1, name: 'Peter Pettigrew' },
     card: { id: 'dv1-1' },
     cardName: 'dv1-1',
     createdAt: '2024-08-12 16:00:00',
@@ -29,7 +29,7 @@ export const auctionsMock: AuctionResponse[] = [
   },
   {
     id: 3,
-    owner: { id: 2 },
+    owner: { id: 2, name: 'Bilbo Baggins' },
     card: { id: 'dp3-1' },
     cardName: 'dp3-1',
     createdAt: '2024-08-12 16:00:00',
@@ -42,7 +42,7 @@ export const auctionsMock: AuctionResponse[] = [
   },
   {
     id: 4,
-    owner: { id: 2 },
+    owner: { id: 2, name: 'Bilbo Baggins' },
     card: { id: 'dp3-1' },
     cardName: 'dp3-1',
     createdAt: '2024-08-12 16:00:00',
