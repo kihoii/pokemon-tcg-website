@@ -10,6 +10,7 @@ import { Footer } from './components/Footer/Footer.tsx';
 import { PokemonPage } from './pages/PokemonPage/PokemonPage.tsx';
 import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
 import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
+import { UserAuctionsPage } from './pages/UserAuctionsPage/UserAuctionsPage.tsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="sign-up" element={<SignUpPage />} />
           <Route path="user" element={<UserAccountPage />} />
           <Route path="auction-market" element={<AuctionMarketplacePage />} />
+          <Route path="user/:id/auctions" element={<UserAuctionsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
