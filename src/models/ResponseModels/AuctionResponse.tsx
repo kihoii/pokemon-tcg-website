@@ -8,7 +8,7 @@ export interface AuctionResponse {
   cardName?: string;
   createdAt?: string;
   startPrice?: number;
-  currentPrice?: number;
+  currentPrice: number;
   activeTime: number; //hours
   minStep: number;
   isAborted?: boolean;

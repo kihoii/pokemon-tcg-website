@@ -10,6 +10,7 @@ import { Footer } from './components/Footer/Footer.tsx';
 import { PokemonCardPage } from './pages/PokemonCardPage/PokemonCardPage.tsx';
 import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
 import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
+import { AuctionPage } from './pages/AuctionPage/AuctionPage.tsx';
 import { BuyPage } from './pages/AuctionPage/BuyPage.tsx';
 import { SalePage } from './pages/AuctionPage/SalePage.tsx';
 import { UserParticipatedAuctionsPage } from './pages/UserParticipatedAuctionsPage/UserParticipatedAuctionsPage.tsx';
@@ -39,6 +40,7 @@ function App() {
           />
           <Route path="auction-sale" element={<SalePage />} />
           <Route path="auction-buy" element={<BuyPage />} />
+          <Route path="auction/:id" element={<AuctionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
