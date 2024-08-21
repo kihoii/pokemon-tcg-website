@@ -5,7 +5,7 @@ import { CardShortResponse } from '../../models/ResponseModels/CardShortResponse
 
 const { Meta } = Card;
 
-export const CardItem: React.FC<{ pokemon: PokemonDto }> = ({ pokemon }) => {
+export const CardItem: React.FC<{ card: CardShortResponse }> = ({ card }) => {
   const [columnSpan, setColumnSpan] = useState(getColumnSpan());
 
   useEffect(() => {
@@ -32,16 +32,14 @@ export const CardItem: React.FC<{ pokemon: PokemonDto }> = ({ pokemon }) => {
     <Col span={columnSpan}>
       <Card
         hoverable={true}
-        onClick={() => window.location.assign('/pokemon/' + pokemon.id)}
+        onClick={() => window.location.assign('/pokemon/' + card.id)}
         className="pokemon-card"
-        title={pokemon.name}
+        title={card.name}
         bordered={false}
-        cover={
-          <img className="img" alt={pokemon.id} src={pokemon.images.small} />
-        }
+        cover={<img className="img" alt={card.id} src={card.images!.small} />}
       >
-        {pokemon.rarity}
-        <Meta title={pokemon.artist} description={pokemon.flavorText} />
+        {card.rarity}
+        <Meta title={card.artist} description={card.flavorText} />
       </Card>
     </Col>
   );
