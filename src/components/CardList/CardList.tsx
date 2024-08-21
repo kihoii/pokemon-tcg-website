@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Pagination, PaginationProps, Row } from 'antd';
 import { CardItem } from '../../components/CardItem/CardItem';
-import { changePage, changePageSize } from '../../store/cardsPageSlice';
+import { changePage } from '../../store/cardsPageSlice';
 import { getCards, getCardsByIds } from '../../api/helpers';
 
 interface CardIds {
@@ -17,8 +17,7 @@ export function CardList({ cardIds: cardIds }: CardIds): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const onChange: PaginationProps['onChange'] = (pageNumber, pageSize) => {
-    dispatch(changePage(pageNumber));
-    dispatch(changePageSize(pageSize));
+    dispatch(changePage({ page: pageNumber, pageSize: pageSize }));
   };
 
   const {
