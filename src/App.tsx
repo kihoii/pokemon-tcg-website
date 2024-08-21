@@ -11,6 +11,8 @@ import { PokemonPage } from './pages/PokemonPage/PokemonPage.tsx';
 import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
 import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
 import { UserAuctionsPage } from './pages/UserAuctionsPage/UserAuctionsPage.tsx';
+import { BuyPage } from './pages/AuctionPage/BuyPage.tsx';
+import { SalePage } from './pages/AuctionPage/SalePage.tsx';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="user" element={<UserAccountPage />} />
           <Route path="auction-market" element={<AuctionMarketplacePage />} />
           <Route path="user/:id/auctions" element={<UserAuctionsPage />} />
+          <Route path="auction-sale" element={<SalePage />} />
+          <Route path="auction-buy" element={<BuyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
