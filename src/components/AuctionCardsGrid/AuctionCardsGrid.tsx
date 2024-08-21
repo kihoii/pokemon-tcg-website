@@ -11,7 +11,7 @@ export const AuctionCardsGrid = ({
   return (
     <>
       {auctions.length != 0 ? (
-        <div className="auction-card-holder container">
+        <div className="auction-card-holder">
           {auctions.map((auction, index) => (
             <AuctionCard key={index} auction={auction} />
           ))}

@@ -21,7 +21,7 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-export const SignUpPage = ({ name }: { name: string }) => {
+export const SignUpPage = () => {
   const { control, handleSubmit } = useForm();
   return (
     <div>
@@ -36,7 +36,7 @@ export const SignUpPage = ({ name }: { name: string }) => {
             collection! We hope you enjoy it!
           </h2>
           <Form
-            name={name}
+            name="sign-up-form"
             onFinish={handleSubmit((data) => {
               console.log(data);
             })}
