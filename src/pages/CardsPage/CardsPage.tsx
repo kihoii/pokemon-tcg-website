@@ -7,6 +7,7 @@ import { getCards } from '../../api/helpers.tsx';
 import { useQuery } from 'react-query';
 import { changePage, changePageSize } from '../../store/cardsPageSlice.tsx';
 import { useAppSelector, useAppDispatch } from '../../store/hooks.tsx';
+import { SpinLoader } from '../../components/SpinLoader/SpinLoader.tsx';
 
 export function CardsPage(): React.JSX.Element {
   const page = useAppSelector((state) => state.cardsPage.page);
@@ -24,27 +25,30 @@ export function CardsPage(): React.JSX.Element {
     dispatch(changePageSize(pageSize));
   };
 
-  if (isLoading) {
-    return <div className="loader">Loading...</div>;
-  }
-
   if (error) {
     return <div>Error loading cards</div>;
   }
 
   return (
     <div className="cards-page">
-      <Row gutter={16}>
-        {cards?.map((item) => <CardItem key={item.id} card={item} />)}
-      </Row>
-      <Pagination
-        showQuickJumper
-        defaultCurrent={page}
-        pageSize={pageSize}
-        pageSizeOptions={[8, 16, 20]}
-        total={250}
-        onChange={onChange}
-      />
+      <div className="container cards-holder">
+        <h2>All Cards Collection</h2>
+        {!isLoading ? (
+          <Row gutter={16}>
+            {cards?.map((item) => <CardItem key={item.id} card={item} />)}
+          </Row>
+        ) : (
+          <SpinLoader />
+        )}
+        <Pagination
+          showQuickJumper
+          defaultCurrent={page}
+          pageSize={pageSize}
+          pageSizeOptions={[8, 16, 20]}
+          total={250}
+          onChange={onChange}
+        />
+      </div>
     </div>
   );
 }
