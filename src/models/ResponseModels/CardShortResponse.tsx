@@ -5,5 +5,7 @@ export interface CardShortResponse {
     small: string;
     large: string;
   };
+  artist?: string;
   rarity?: string;
+  flavorText?: string;
 }

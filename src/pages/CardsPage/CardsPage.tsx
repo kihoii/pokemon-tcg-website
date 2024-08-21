@@ -35,7 +35,7 @@ export function CardsPage(): React.JSX.Element {
   return (
     <div className="cards-page">
       <Row gutter={16}>
-        {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
+        {cards?.map((item) => <CardItem key={item.id} card={item} />)}
       </Row>
       <Pagination
         showQuickJumper

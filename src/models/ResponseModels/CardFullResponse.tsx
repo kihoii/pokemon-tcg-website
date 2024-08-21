@@ -35,6 +35,7 @@ export interface CardFullResponse {
   number: string;
   artist: string;
   rarity: string;
+  flavorText: string;
   nationalPokedexNumbers: number[];
   legalities: {
     unlimited: string;
