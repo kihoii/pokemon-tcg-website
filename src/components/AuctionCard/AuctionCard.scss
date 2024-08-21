@@ -1,8 +1,7 @@
 @import '../../variables';
 
 .auction-card {
-  width: 500px;
-  height: 380px;
+  width: 320px;
   display: flex;
   background-color: $gray-background;
   padding: 15px 20px;
@@ -10,15 +9,14 @@
   gap: 10px;
 
   .img {
-    width: 245px;
+    width: 145px;
     align-self: center;
   }
 
   .auction-card-header {
     display: flex;
-    width: 200px;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     margin-bottom: 5px;
   }
 
@@ -43,6 +41,7 @@
 
   .auction-card-body {
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-top: 5px;
   }
