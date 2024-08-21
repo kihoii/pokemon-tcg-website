@@ -1,20 +1,18 @@
-import './App.scss';
-import { HomePage } from './pages/HomePage/HomePage.tsx';
-import { Navbar } from './components/Navbar/Navbar.tsx';
-import { Route, Routes } from 'react-router-dom';
-import { UserRatingPage } from './pages/UserRatingPage/UserRatingPage.tsx';
-import { CardsPage } from './pages/CardsPage/CardsPage.tsx';
-import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.tsx';
-import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
-import { Footer } from './components/Footer/Footer.tsx';
-import { PokemonCardPage } from './pages/PokemonCardPage/PokemonCardPage.tsx';
-import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
-import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
-import { AuctionPage } from './pages/AuctionPage/AuctionPage.tsx';
-import { BuyPage } from './pages/AuctionPage/BuyPage.tsx';
-import { SalePage } from './pages/AuctionPage/SalePage.tsx';
 import { UserParticipatedAuctionsPage } from './pages/UserParticipatedAuctionsPage/UserParticipatedAuctionsPage.tsx';
 import { UserCreatedAuctionsPage } from './pages/UserCreatedAuctionsPage/UserCreatedAuctionsPage.tsx';
+import { AuctionMarketplacePage } from './pages/AuctionMarketplacePage/AuctionMarketplacePage.tsx';
+import { PokemonCardPage } from './pages/PokemonCardPage/PokemonCardPage.tsx';
+import { UserAccountPage } from './pages/UserAccountPage/UserAccountPage.tsx';
+import { UserRatingPage } from './pages/UserRatingPage/UserRatingPage.tsx';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.tsx';
+import { AuctionPage } from './pages/AuctionPage/AuctionPage.tsx';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage.tsx';
+import { CardsPage } from './pages/CardsPage/CardsPage.tsx';
+import { HomePage } from './pages/HomePage/HomePage.tsx';
+import { Navbar } from './components/Navbar/Navbar.tsx';
+import { Footer } from './components/Footer/Footer.tsx';
+import { Route, Routes } from 'react-router-dom';
+import './App.scss';
 
 function App() {
   return (
@@ -38,8 +36,6 @@ function App() {
             path="/auctions/created"
             element={<UserCreatedAuctionsPage />}
           />
-          <Route path="auction-sale" element={<SalePage />} />
-          <Route path="auction-buy" element={<BuyPage />} />
           <Route path="auction/:id" element={<AuctionPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

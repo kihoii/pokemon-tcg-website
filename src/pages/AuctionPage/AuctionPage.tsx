@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import { getCardById } from '../../api/helpers';
 import { auctionsMock } from '../../mock/AuctionsMock';
 import { CardItem } from '../../components/CardItem/CardItem';
-import { PokemonDto } from '../../interfaces/PokemonDto';
+import { CardShortResponse } from '../../models/ResponseModels/CardShortResponse';
 
 export function AuctionPage(): React.JSX.Element {
   const params = useParams();
@@ -46,7 +46,7 @@ export function AuctionPage(): React.JSX.Element {
         </div>
 
         <div className="auction-content">
-          <CardItem key={auction?.card?.id} pokemon={card as PokemonDto} />
+          <CardItem key={auction?.card?.id} card={card as CardShortResponse} />
           <div className="auction-data">
             <div className="data-row">
               Card's name: <b>{auction.cardName}</b>
