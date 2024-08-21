@@ -10,7 +10,7 @@ export const AuctionsCreatedTab = ({
   isAborted?: boolean;
 }) => {
   const ownerId = 2;
-  //participated query with status
+  //created query with status
   console.log(isAborted == true);
   console.log(isFinished == true);
   const auctions = auctionsMock.filter(

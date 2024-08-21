@@ -7,25 +7,21 @@ const items: TabsProps['items'] = [
     key: '1',
     label: 'All',
     children: <AuctionsCreatedTab />,
-    forceRender: true,
   },
   {
     key: '2',
     label: 'Active',
     children: <AuctionsCreatedTab isAborted={false} isFinished={false} />,
-    forceRender: true,
   },
   {
     key: '3',
     label: 'Finished',
     children: <AuctionsCreatedTab isFinished={true} />,
-    forceRender: true,
   },
   {
     key: '4',
     label: 'Aborted',
     children: <AuctionsCreatedTab isAborted={true} />,
-    forceRender: true,
   },
 ];
 
