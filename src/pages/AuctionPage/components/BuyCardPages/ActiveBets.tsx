@@ -1,6 +1,6 @@
-import './Components.scss';
-import { AuctionCard } from './AuctionCard/AuctionCard.tsx';
-import { AuctionCardActiveResponse } from '../../../models/ResponseModels/AuctionCardActiveResponse.tsx';
+import './../Components.scss';
+import { AuctionCard } from './../AuctionCard/AuctionCard.tsx';
+import { AuctionCardActiveResponse } from '../../../../models/ResponseModels/AuctionCardActiveResponse.tsx';
 export const ActiveBets = () => {
     
     const auctionCardList: AuctionCardActiveResponse[] = [

@@ -1,7 +1,7 @@
-import './Components.scss';
-import { AuctionCard } from './AuctionCard/AuctionCard.tsx';
-import { AuctionCardActiveResponse } from '../../../models/ResponseModels/AuctionCardActiveResponse.tsx';
-export const History = () => {
+import './../Components.scss';
+import { AuctionCard } from './../AuctionCard/AuctionCard.tsx';
+import { AuctionCardActiveResponse } from '../../../../models/ResponseModels/AuctionCardActiveResponse.tsx';
+export const Purchases = () => {
     
     const auctionCardList: AuctionCardActiveResponse[] = [
         {
@@ -10,7 +10,7 @@ export const History = () => {
             owner: 'sdsdsasx',
             lastBet: 1445,
             timeEnd: '12:23',
-            date: '12.08',
+            date: '12.08'
           },
 
           {
@@ -24,11 +24,11 @@ export const History = () => {
         ]
     return (
         <div> 
-            <h1> Here are all the cards you participated in auctions!</h1>
+            <h1> Here are all the cards that you won at auctions</h1>
             <div className='cards'> 
             {auctionCardList.map((card) => (
           <AuctionCard
-            type="history"
+            type="purchase"
             card={{ ...card }}
           />
         ))}

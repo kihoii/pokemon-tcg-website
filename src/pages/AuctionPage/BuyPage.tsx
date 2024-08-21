@@ -1,9 +1,9 @@
-import './AuctionPage.scss';
+import './BuyPage.scss';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-import { ActiveBets } from './components/ActiveBets.tsx';
-import { Purchases } from './components/Purchases.tsx';
-import { History } from './components/History.tsx';
+import { ActiveBets } from './components/BuyCardPages/ActiveBets.tsx';
+import { Purchases } from './components/BuyCardPages/Purchases.tsx';
+import { History } from './components/BuyCardPages/History.tsx';
 
 
 const onChange = (key: string) => {
@@ -29,7 +29,7 @@ const items: TabsProps['items'] = [
     ];
 
 
-export const AuctionPage = () => {
+export const BuyPage = () => {
     
         return (
             <div > <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
