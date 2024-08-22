@@ -1,3 +1,5 @@
+@import '../../../../variables';
+
 #hero {
   display: flex;
   justify-content: space-between;
@@ -9,10 +11,12 @@
     h1 {
       font-size: 67px;
       font-weight: 600;
+      font-family: $font-header, monospace;
     }
 
     h2 {
       font-size: 22px;
+      font-family: $font-header, monospace;
     }
   }
 
@@ -32,6 +36,7 @@
       .info-number {
         font-size: 28px;
         font-weight: 700;
+        font-family: $font-header, monospace;
       }
 
       .info-type {

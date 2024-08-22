@@ -1,7 +1,7 @@
 @import '../../../../variables';
 
 .rating-header {
-  font-family: 'Space Mono', monospace;
+  font-family: $font-header, monospace;
   font-size: 16px;
   color: $blue-color;
 
