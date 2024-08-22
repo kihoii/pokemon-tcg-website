@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { pokemonWishList } from './localStorageKeys';
-import { LocalStorageService } from '../services/localStorageService';
+import { getItem, setItem } from '../services/localStorageService';
 
 export interface WishListSlice {
   count: number;
 }
 
 const initialState: WishListSlice = {
-  count: LocalStorageService.getItem(pokemonWishList)?.length || 0,
+  count: getItem<string[]>(pokemonWishList, [])?.length,
 };
 
 export const wishListSlice = createSlice({
@@ -16,20 +16,20 @@ export const wishListSlice = createSlice({
   initialState,
   reducers: {
     addToWishList: (state, action: PayloadAction<string>) => {
-      let wishList = LocalStorageService.getItem(pokemonWishList) || [];
+      let wishList = getItem<string[]>(pokemonWishList, []);
 
       if (!wishList.includes(action.payload)) {
         wishList.push(action.payload);
-        LocalStorageService.setItem(pokemonWishList, wishList);
+        setItem(pokemonWishList, wishList);
       }
 
       state.count = wishList.length;
     },
     removeFromWishList: (state, action: PayloadAction<string>) => {
-      let wishList = LocalStorageService.getItem(pokemonWishList) || [];
+      let wishList = getItem<string[]>(pokemonWishList, []);
 
       wishList = wishList.filter((item: string) => item !== action.payload);
-      LocalStorageService.setItem(pokemonWishList, wishList);
+      setItem(pokemonWishList, wishList);
       state.count = wishList.length;
     },
   },

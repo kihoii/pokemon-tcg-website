@@ -8,9 +8,9 @@ import {
   removeFromWishList,
 } from '../../store/wishListSlice.tsx';
 import { useAppDispatch } from '../../store/hooks.tsx';
-import { LocalStorageService } from '../../services/localStorageService.tsx';
 import { pokemonWishList } from '../../store/localStorageKeys.tsx';
 import { useState, useEffect } from 'react';
+import { getItem } from '../../services/localStorageService.tsx';
 
 const { Meta } = Card;
 
@@ -25,8 +25,8 @@ export function PokemonPage(): React.JSX.Element {
   } = useQuery(['card', params.id], () => getCardById(params.id as string));
 
   useEffect(() => {
-    const wishList = LocalStorageService.getItem(pokemonWishList) || [];
-    setIsInWishList(wishList.includes(params.id));
+    const wishList = getItem<string[]>(pokemonWishList, []);
+    setIsInWishList(wishList.includes(params.id as string));
   }, [params.id]);
 
   function onClickAddToWishList(cardId: string) {

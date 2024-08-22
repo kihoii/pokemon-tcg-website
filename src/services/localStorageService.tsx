@@ -1,14 +1,12 @@
-export class LocalStorageService {
-  static getItem(key: string): any {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : null;
-  }
+export function getItem<T>(key: string, defaultValue: T): T {
+  const item = localStorage.getItem(key);
+  return item ? (JSON.parse(item) as T) : defaultValue;
+}
 
-  static setItem(key: string, value: any): void {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
+export function setItem<T>(key: string, value: T): void {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
-  static removeItem(key: string): void {
-    localStorage.removeItem(key);
-  }
+export function removeItem(key: string): void {
+  localStorage.removeItem(key);
 }
