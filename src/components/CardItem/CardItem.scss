@@ -8,6 +8,10 @@
   height: 100%;
   padding: 0 22px;
 
+  .ant-card-head-title {
+    font-family: $font-header, monospace;
+  }
+
   .ant-card-meta-title {
     font-family: $font-header, monospace;
   }
