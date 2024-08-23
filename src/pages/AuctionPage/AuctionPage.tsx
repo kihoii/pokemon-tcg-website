@@ -31,7 +31,7 @@ export function AuctionPage(): React.JSX.Element {
     return <div>Error loading cards</div>;
   }
 
-  const minPrice = auction.currentPrice + auction.minStep;
+  const minPrice = auction?.currentBet.price + auction?.minStep;
 
   return (
     <div className="auction-section">
@@ -59,7 +59,7 @@ export function AuctionPage(): React.JSX.Element {
             </div>
 
             <div className="data-row">
-              Current price: <b>{auction.currentPrice}</b>
+              Current price: <b>{auction.currentBet.price}</b>
             </div>
 
             <div className="data-row">
