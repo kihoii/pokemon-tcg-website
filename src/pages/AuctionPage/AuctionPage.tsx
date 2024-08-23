@@ -35,6 +35,7 @@ export function AuctionPage(): React.JSX.Element {
   useEffect(() => {
     if (!auction) return;
 
+    setMinPrice(auction.startPrice! + auction.minStep);
     const currentDate = new Date();
     const auctionFinishedDate = new Date(auction.createdAt!);
     auctionFinishedDate.setHours(
@@ -47,22 +48,6 @@ export function AuctionPage(): React.JSX.Element {
     }
   }, [auction]);
 
-  function onClickMakeBet() {
-    const newBet = {
-      id: bets.length + 1,
-      price: +(auction?.currentBet?.price! + auction!.minStep).toFixed(2),
-      userId: 1,
-    };
-
-    setBets((prevBets) => [...prevBets, newBet]);
-    if (auction) {
-      auction.currentBet = newBet;
-      setAuctionState(1);
-      setCurrentBetPrice(newBet.price);
-      setMinPrice(+(newBet.price + auction.minStep).toFixed(2));
-    }
-  }
-
   if (!auction) {
     return <div>Error loading auction</div>;
   }
@@ -73,6 +58,24 @@ export function AuctionPage(): React.JSX.Element {
 
   if (error) {
     return <div>Error loading cards</div>;
+  }
+
+  function onClickMakeBet() {
+    const newBet = {
+      id: bets.length + 1,
+      price: +(
+        (auction?.currentBet?.price! ?? auction?.startPrice) + auction!.minStep
+      ).toFixed(2),
+      userId: 1,
+    };
+
+    setBets((prevBets) => [...prevBets, newBet]);
+    if (auction) {
+      auction.currentBet = newBet;
+      setAuctionState(1);
+      setCurrentBetPrice(newBet.price);
+      setMinPrice(+(newBet.price + auction.minStep).toFixed(2));
+    }
   }
 
   return (
