@@ -20,6 +20,7 @@ export function AuctionPage(): React.JSX.Element {
   const [minPrice, setMinPrice] = useState(
     auction?.currentBet?.price! + auction?.minStep!
   );
+  const [activeTime, setActiveTime] = useState(auction?.activeTime);
   const [auctionState, setAuctionState] = useState(
     auction?.currentBet?.id ? 1 : 0
   );
@@ -38,9 +39,7 @@ export function AuctionPage(): React.JSX.Element {
     setMinPrice(auction.startPrice! + auction.minStep);
     const currentDate = new Date();
     const auctionFinishedDate = new Date(auction.createdAt!);
-    auctionFinishedDate.setHours(
-      auctionFinishedDate.getHours() + auction.activeTime
-    );
+    auctionFinishedDate.setHours(auctionFinishedDate.getHours() + activeTime!);
 
     if (auctionFinishedDate < currentDate) {
       auction.isFinished = true;
@@ -72,9 +71,11 @@ export function AuctionPage(): React.JSX.Element {
     setBets((prevBets) => [...prevBets, newBet]);
     if (auction) {
       auction.currentBet = newBet;
+      auction.activeTime = 24;
       setAuctionState(1);
       setCurrentBetPrice(newBet.price);
       setMinPrice(+(newBet.price + auction.minStep).toFixed(2));
+      setActiveTime(auction.activeTime);
     }
   }
 
@@ -120,7 +121,7 @@ export function AuctionPage(): React.JSX.Element {
             ) : (
               <>
                 <div className="data-row">
-                  Active time left: <b>{auction.activeTime}</b>
+                  Active time left: <b>{activeTime}</b>
                 </div>
 
                 <div className="data-row">

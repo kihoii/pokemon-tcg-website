@@ -23,7 +23,7 @@ export const auctionsMock: AuctionResponse[] = [
     createdAt: '2024-08-24 16:00:00',
     startPrice: 2.34,
     currentBet: undefined,
-    activeTime: 24,
+    activeTime: 2,
     minStep: 0.12,
     isAborted: false,
     isFinished: false,
