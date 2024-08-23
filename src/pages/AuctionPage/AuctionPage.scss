@@ -1,7 +1,13 @@
 .auction-section {
+  .tag-section {
+    display: flex;
+    justify-content: center;
+  }
+
   .auction-content {
     display: flex;
     gap: 15px;
+    justify-content: space-evenly;
 
     .auction-data {
       display: flex;

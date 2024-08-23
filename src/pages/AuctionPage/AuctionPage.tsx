@@ -31,11 +31,20 @@ export function AuctionPage(): React.JSX.Element {
     return <div>Error loading cards</div>;
   }
 
-  const minPrice = auction?.currentBet.price + auction?.minStep;
+  const currentDate = new Date();
+  const auctionFinishedDate = new Date(auction.createdAt!);
+  auctionFinishedDate.setHours(
+    auctionFinishedDate.getHours() + auction.activeTime
+  );
+  const isFinished = auctionFinishedDate < currentDate;
+  if (isFinished) {
+    auction.isFinished = true;
+  }
+  const minPrice = auction.currentBet.price + auction.minStep;
 
   return (
     <div className="auction-section">
-      <Card title={'Auction: ' + auction?.id} bordered={false}>
+      <Card title={'Auction: ' + auction.id} bordered={false}>
         <div className="tag-section">
           <Flex wrap>
             {auction.isFinished ? <Tag color="red">Finished</Tag> : <></>}
@@ -76,15 +85,19 @@ export function AuctionPage(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="bet-section">
-          <InputNumber
-            addonAfter="$"
-            defaultValue={minPrice}
-            min={minPrice}
-            step={auction.minStep}
-          />
-          <Button type="primary">Bet</Button>
-        </div>
+        {isFinished ? (
+          <></>
+        ) : (
+          <div className="bet-section">
+            <InputNumber
+              addonAfter="$"
+              defaultValue={minPrice}
+              min={minPrice}
+              step={auction.minStep}
+            />
+            <Button type="primary">Bet</Button>
+          </div>
+        )}
       </Card>
     </div>
   );
