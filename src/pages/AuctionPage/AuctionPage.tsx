@@ -37,11 +37,10 @@ export function AuctionPage(): React.JSX.Element {
     if (!auction) return;
 
     setMinPrice(auction.startPrice! + auction.minStep);
-    const currentDate = new Date();
     const auctionFinishedDate = new Date(auction.createdAt!);
     auctionFinishedDate.setHours(auctionFinishedDate.getHours() + activeTime!);
 
-    if (auctionFinishedDate < currentDate) {
+    if (auctionFinishedDate < new Date()) {
       auction.isFinished = true;
       setAuctionState(2);
     }
