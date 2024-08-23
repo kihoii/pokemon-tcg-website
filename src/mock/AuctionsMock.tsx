@@ -20,7 +20,7 @@ export const auctionsMock: AuctionResponse[] = [
     owner: { id: 1, name: 'Peter Pettigrew' },
     card: { id: 'dv1-1', name: 'Weedle' },
     cardName: 'dv1-1',
-    createdAt: '2024-08-12 16:00:00',
+    createdAt: '2024-08-23 16:00:00',
     startPrice: 2.34,
     currentBet: BetShortResponseMock[1],
     activeTime: 24,

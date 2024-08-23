@@ -8,7 +8,7 @@ export const BetShortResponseMock: BetShortResponse[] = [
   },
   {
     id: 2,
-    price: 1.3,
+    price: 3.9,
     userId: 7,
   },
   {

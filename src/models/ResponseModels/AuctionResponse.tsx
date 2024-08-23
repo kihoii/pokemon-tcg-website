@@ -9,7 +9,7 @@ export interface AuctionResponse {
   cardName?: string;
   createdAt?: string;
   startPrice?: number;
-  currentBet: BetShortResponse;
+  currentBet?: BetShortResponse;
   activeTime: number; //hours
   minStep: number;
   isAborted?: boolean;

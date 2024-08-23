@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AuctionPage.scss';
 import { useParams } from 'react-router-dom';
-import { Button, Card, Flex, InputNumber, Tag } from 'antd';
+import { Button, Card, Flex, InputNumber, Steps, Tag } from 'antd';
 import { useQuery } from 'react-query';
 import { getCardById } from '../../api/helpers';
 import { auctionsMock } from '../../mock/AuctionsMock';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { PokemonDto } from '../../interfaces/PokemonDto';
+import { auctionSteps } from '../../store/auctionSteps';
+import { BetShortResponseMock } from '../../mock/BetShortResponseMock';
 
 export function AuctionPage(): React.JSX.Element {
   const params = useParams();
   const auction = auctionsMock.find((x) => x.id === +params.id!);
+  const [bets, setBets] = useState(BetShortResponseMock);
+  const [currentBetPrice, setCurrentBetPrice] = useState(
+    auction?.currentBet?.price
+  );
+  const [minPrice, setMinPrice] = useState(
+    auction?.currentBet?.price! + auction?.minStep!
+  );
+  const [auctionState, setAuctionState] = useState(
+    auction?.currentBet?.id ? 1 : 0
+  );
+
   const {
     data: card,
     error,
@@ -18,6 +31,37 @@ export function AuctionPage(): React.JSX.Element {
   } = useQuery(['card', params.id], () =>
     getCardById(auction?.card?.id as string)
   );
+
+  useEffect(() => {
+    if (!auction) return;
+
+    const currentDate = new Date();
+    const auctionFinishedDate = new Date(auction.createdAt!);
+    auctionFinishedDate.setHours(
+      auctionFinishedDate.getHours() + auction.activeTime
+    );
+
+    if (auctionFinishedDate < currentDate) {
+      auction.isFinished = true;
+      setAuctionState(2);
+    }
+  }, [auction]);
+
+  function onClickMakeBet() {
+    const newBet = {
+      id: bets.length + 1,
+      price: +(auction?.currentBet?.price! + auction!.minStep).toFixed(2),
+      userId: 1,
+    };
+
+    setBets((prevBets) => [...prevBets, newBet]);
+    if (auction) {
+      auction.currentBet = newBet;
+      setAuctionState(1);
+      setCurrentBetPrice(newBet.price);
+      setMinPrice(+(newBet.price + auction.minStep).toFixed(2));
+    }
+  }
 
   if (!auction) {
     return <div>Error loading auction</div>;
@@ -30,17 +74,6 @@ export function AuctionPage(): React.JSX.Element {
   if (error) {
     return <div>Error loading cards</div>;
   }
-
-  const currentDate = new Date();
-  const auctionFinishedDate = new Date(auction.createdAt!);
-  auctionFinishedDate.setHours(
-    auctionFinishedDate.getHours() + auction.activeTime
-  );
-  const isFinished = auctionFinishedDate < currentDate;
-  if (isFinished) {
-    auction.isFinished = true;
-  }
-  const minPrice = auction.currentBet.price + auction.minStep;
 
   return (
     <div className="auction-section">
@@ -67,35 +100,56 @@ export function AuctionPage(): React.JSX.Element {
               Initial cost: <b>{auction.startPrice}</b>
             </div>
 
-            <div className="data-row">
-              Current price: <b>{auction.currentBet.price}</b>
-            </div>
+            {currentBetPrice ? (
+              <div className="data-row">
+                Current price: <b>{currentBetPrice}</b>
+              </div>
+            ) : (
+              <></>
+            )}
 
             <div className="data-row">
               Step: <b>{auction.minStep}</b>
             </div>
 
-            <div className="data-row">
-              Active time left: <b>{auction.activeTime}</b>
-            </div>
+            {auction.isFinished || auction.isAborted ? (
+              <></>
+            ) : (
+              <>
+                <div className="data-row">
+                  Active time left: <b>{auction.activeTime}</b>
+                </div>
 
-            <div className="data-row">
-              Creation time: <b>{auction.createdAt}</b>
-            </div>
+                <div className="data-row">
+                  Creation time: <b>{auction.createdAt}</b>
+                </div>
+              </>
+            )}
+          </div>
+
+          <div>
+            <Steps
+              progressDot
+              current={auctionState}
+              direction="vertical"
+              items={auctionSteps}
+            />
           </div>
         </div>
 
-        {isFinished ? (
+        {auction.isFinished ? (
           <></>
         ) : (
           <div className="bet-section">
             <InputNumber
               addonAfter="$"
-              defaultValue={minPrice}
+              value={minPrice}
               min={minPrice}
               step={auction.minStep}
             />
-            <Button type="primary">Bet</Button>
+            <Button type="primary" onClick={onClickMakeBet}>
+              Make bet
+            </Button>
           </div>
         )}
       </Card>
