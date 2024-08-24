@@ -1,50 +1,52 @@
-#main-section{
+#sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    font-size: 46px;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 20px;
+  }
+
+  .sign-up-box {
     display: flex;
-    flex-direction: row;
-    .left-container{
-  
-    }
-    .right-container{
-        padding-top: 100px;
-        padding-left: 60px;
+    gap: 50px;
+  }
 
-        h1 {
-            font-size: 67px;
-            font-weight: 600;
-          }
+  .left-banner {
+    width: 500px;
+    object-fit: contain;
+  }
 
-          h2 {
-            font-size: 22px;
-          }
+  .right-container {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 450px;
 
-        .text{
-            max-width: 600px;
-            margin-bottom: 20px;
-        }
-
-        Input{
-            border-color: black;
-            
-        }
+    .ant-col {
+      padding: 0;
+      text-align: start;
+      width: 330px;
     }
 
-    .grey{
-        color: rgb(89, 87, 87);
-
+    p {
+      font-size: 22px;
     }
 
-    button{
-        width: 200px;
-        height: 50px;
-        font-size: 15px;
+    .text {
+      max-width: 600px;
+      margin-bottom: 20px;
     }
+  }
 
-    h1{
-        font-size: 40px;
-    }
-
-    .image-pokemon{
-        max-width: 700px;
-        max-height: 700px;
-    }
+  button {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+  }
 }
