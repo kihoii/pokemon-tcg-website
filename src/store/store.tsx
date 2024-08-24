@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cardsPageReducer from './cardsPageSlice';
+import wishListReducer from './wishListSlice';
 
 export const store = configureStore({
-  reducer: { cardsPage: cardsPageReducer },
+  reducer: { cardsPage: cardsPageReducer, wishList: wishListReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

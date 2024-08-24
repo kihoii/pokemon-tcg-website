@@ -15,16 +15,14 @@ export const cardsPageSlice = createSlice({
   name: 'cardsPage',
   initialState,
   reducers: {
-    changePage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload;
-    },
-    changePageSize: (state, action: PayloadAction<number>) => {
-      state.pageSize = action.payload;
+    changePage: (state, action: PayloadAction<CardsPageSlice>) => {
+      state.page = action.payload.page;
+      state.pageSize = action.payload.pageSize;
     },
   },
 });
 
-export const { changePage, changePageSize } = cardsPageSlice.actions;
+export const { changePage } = cardsPageSlice.actions;
 
 export const selectPage = (state: RootState) => state.cardsPage.page;
 export const selectPageSize = (state: RootState) => state.cardsPage.pageSize;

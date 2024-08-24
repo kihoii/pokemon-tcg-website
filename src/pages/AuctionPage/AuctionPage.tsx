@@ -10,9 +10,7 @@ import { PokemonDto } from '../../interfaces/PokemonDto';
 
 export function AuctionPage(): React.JSX.Element {
   const params = useParams();
-  const auction = auctionsMock.find(
-    (x) => x.id === parseInt(params.id as string, 10)
-  );
+  const auction = auctionsMock.find((x) => x.id === +params.id!);
   const {
     data: card,
     error,
@@ -33,7 +31,7 @@ export function AuctionPage(): React.JSX.Element {
     return <div>Error loading cards</div>;
   }
 
-  const minPrice = auction?.currentPrice + auction?.minStep;
+  const minPrice = auction.currentPrice + auction.minStep;
 
   return (
     <div className="auction-section">
@@ -46,7 +44,7 @@ export function AuctionPage(): React.JSX.Element {
         </div>
 
         <div className="auction-content">
-          <CardItem key={auction?.card?.id} pokemon={card as PokemonDto} />
+          <CardItem key={auction.card?.id} pokemon={card as PokemonDto} />
           <div className="auction-data">
             <div className="data-row">
               Card's name: <b>{auction.cardName}</b>

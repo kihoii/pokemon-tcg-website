@@ -36,3 +36,14 @@ export const getCardById = async (
     return;
   }
 };
+
+export const getCardsByIds = async (ids: string[]): Promise<PokemonDto[]> => {
+  try {
+    const cardPromises = ids.map((id) => getCardById(id));
+    const cards = await Promise.all(cardPromises);
+    return cards.filter((card) => card !== undefined) as PokemonDto[];
+  } catch (error) {
+    console.error('Error fetching cards by IDs:', error);
+    return [];
+  }
+};
