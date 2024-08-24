@@ -2,12 +2,16 @@ import './SignUpPage.scss';
 import placeholder from './Ivysaur.png';
 import type { FormProps } from 'antd';
 import { Button, DatePicker, Form, Input } from 'antd';
-
 import { FormItem } from 'react-hook-form-antd';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import dayjs, { type Dayjs } from 'dayjs';
 import * as z from 'zod';
+import { useMutation } from 'react-query';
+import { addUser } from '../../api/helpers';
+import { SignUpRequest } from '../../models/RequestModels/SignUpRequest';
+
+const phoneRegExp = new RegExp('^[(][0-9]{3}[)][0-9]{7}$');
 
 const schema = z.object({
   name: z
@@ -15,6 +19,10 @@ const schema = z.object({
     .min(1, { message: 'Required' })
     .max(15, { message: 'Username should be less than 15 characters' }),
   email: z.string({ message: 'Required' }),
+  phone: z.string().regex(phoneRegExp, {
+    message: 'Required',
+  }),
+  address: z.string({ message: 'Required' }),
   birthDate: z.instanceof(dayjs as unknown as typeof Dayjs, {
     message: 'Required',
   }),
@@ -22,13 +30,24 @@ const schema = z.object({
   passwordConfirm: z.string().min(1, { message: 'Required' }),
 });
 
-const onFinish: FormProps['onFinish'] = (values) => {
-  values['birthDate'] = values['birthDate'].format('YYYY-MM-DD');
-  console.log('Success:', values);
-};
-
 export const SignUpPage = () => {
+  const mutation = useMutation(() => addUser(user));
   const { control, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+
+  let user: SignUpRequest;
+
+  const onFinish: FormProps['onFinish'] = (values) => {
+    user = {
+      name: values['name'],
+      email: values['email'],
+      phone: values['phone'],
+      address: values['address'],
+      birthDate: values['birthDate'].format('YYYY-MM-DD'),
+      password: values['password'],
+    };
+    console.log('Success:', user);
+    mutation.mutate();
+  };
 
   return (
     <section id="sign-up-page">
@@ -62,6 +81,17 @@ export const SignUpPage = () => {
                 <Input
                   type="email"
                   placeholder="Enter email"
+                  autoComplete="on"
+                />
+              </FormItem>
+
+              <FormItem control={control} name="phone" label="">
+                <Input placeholder="Enter phone" autoComplete="on" />
+              </FormItem>
+
+              <FormItem control={control} name="address" label="" required>
+                <Input
+                  placeholder="Enter where are you from"
                   autoComplete="on"
                 />
               </FormItem>

@@ -1,4 +1,5 @@
 import { PokemonDto } from '../interfaces/PokemonDto.tsx';
+import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
 import { BaseUrl, ApiKey } from './constants.tsx';
 
 const baseGet = (url: string) => {
@@ -6,6 +7,21 @@ const baseGet = (url: string) => {
     method: 'GET',
     headers: { 'X-Api-Key': ApiKey },
   });
+};
+
+export const addUser = async (user: SignUpRequest) => {
+  try {
+    const response = await fetch(
+      import.meta.env.VITE_MIRACULOUS_API_URL + 'users/sign-up',
+      {
+        method: 'POST',
+        body: JSON.stringify(user),
+      }
+    );
+    console.log(response.ok);
+  } catch (error) {
+    console.error('Error adding user:', error);
+  }
 };
 
 export const getCards = async (
