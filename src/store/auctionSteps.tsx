@@ -1,14 +1,16 @@
+import { AuctionStepEnum } from '../enums/AuctionStepEnum';
+
 export const auctionSteps = [
   {
-    title: 'Started',
+    title: AuctionStepEnum[AuctionStepEnum.Started],
     description: 'Auction is started. There are no bets yet',
   },
   {
-    title: 'In Progress',
+    title: AuctionStepEnum[AuctionStepEnum.InProgress],
     description: 'Make your bets',
   },
   {
-    title: 'Finished',
+    title: AuctionStepEnum[AuctionStepEnum.Finished],
     description: 'Auction is finished',
   },
 ];
