@@ -9,6 +9,7 @@ import { CardItem } from '../../components/CardItem/CardItem';
 import { PokemonDto } from '../../interfaces/PokemonDto';
 import { auctionSteps } from '../../store/auctionSteps';
 import { BetShortResponseMock } from '../../mock/BetShortResponseMock';
+import { AuctionStepEnum } from '../../enums/AuctionStepEnum';
 
 export function AuctionPage(): React.JSX.Element {
   const params = useParams();
@@ -22,7 +23,9 @@ export function AuctionPage(): React.JSX.Element {
   );
   const [activeTime, setActiveTime] = useState(auction?.activeTime);
   const [auctionState, setAuctionState] = useState(
-    auction?.currentBet?.id ? 1 : 0
+    auction?.currentBet?.id
+      ? AuctionStepEnum.InProgress
+      : AuctionStepEnum.Started
   );
 
   const {
@@ -42,7 +45,7 @@ export function AuctionPage(): React.JSX.Element {
 
     if (auctionFinishedDate < new Date()) {
       auction.isFinished = true;
-      setAuctionState(2);
+      setAuctionState(AuctionStepEnum.Finished);
     }
   }, [auction]);
 
