@@ -15,6 +15,9 @@ export const addUser = async (user: SignUpRequest) => {
       import.meta.env.VITE_MIRACULOUS_API_URL + 'users/sign-up',
       {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(user),
       }
     );
