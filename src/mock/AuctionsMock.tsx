@@ -1,4 +1,5 @@
 import { AuctionResponse } from '../models/ResponseModels/AuctionResponse';
+import { BetShortResponseMock } from './BetShortResponseMock';
 
 export const auctionsMock: AuctionResponse[] = [
   {
@@ -8,7 +9,7 @@ export const auctionsMock: AuctionResponse[] = [
     cardName: 'xy5-1',
     createdAt: '2024-08-12 16:00:00',
     startPrice: 1.0,
-    currentPrice: 1.0,
+    currentBet: BetShortResponseMock[0],
     activeTime: 24,
     minStep: 0.1,
     isAborted: false,
@@ -19,10 +20,10 @@ export const auctionsMock: AuctionResponse[] = [
     owner: { id: 1, name: 'Peter Pettigrew' },
     card: { id: 'dv1-1', name: 'Weedle' },
     cardName: 'dv1-1',
-    createdAt: '2024-08-12 16:00:00',
+    createdAt: '2024-08-24 16:00:00',
     startPrice: 2.34,
-    currentPrice: 1.0,
-    activeTime: 24,
+    currentBet: undefined,
+    activeTime: 2,
     minStep: 0.12,
     isAborted: false,
     isFinished: false,
@@ -34,7 +35,7 @@ export const auctionsMock: AuctionResponse[] = [
     cardName: 'dp3-1',
     createdAt: '2024-08-12 16:00:00',
     startPrice: 0.46,
-    currentPrice: 1.0,
+    currentBet: BetShortResponseMock[2],
     activeTime: 24,
     minStep: 0.21,
     isAborted: true,
@@ -47,7 +48,7 @@ export const auctionsMock: AuctionResponse[] = [
     cardName: 'dp3-1',
     createdAt: '2024-08-12 16:00:00',
     startPrice: 5.46,
-    currentPrice: 1.0,
+    currentBet: BetShortResponseMock[3],
     activeTime: 48,
     minStep: 0.21,
     isAborted: false,

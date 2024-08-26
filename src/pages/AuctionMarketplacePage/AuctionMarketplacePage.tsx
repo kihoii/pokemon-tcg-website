@@ -8,7 +8,7 @@ import { AuctionResponse } from '../../models/ResponseModels/AuctionResponse';
 const auctions = auctionsMock.map((x) => ({
   id: x.id,
   cardName: x.card?.name,
-  currentPrice: x.currentPrice,
+  currentPrice: x.currentBet?.price,
   minStep: x.minStep,
   createdAt: x.createdAt,
   activeTime: x.activeTime,
