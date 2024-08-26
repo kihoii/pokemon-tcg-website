@@ -1,6 +1,8 @@
 import { PokemonDto } from '../interfaces/PokemonDto.tsx';
-import { LoginRequest } from '../models/RequestModels/Loginrequest.tsx';
+import { LoginRequest } from '../models/RequestModels/LoginRequest.tsx';
 import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
+import { setItem } from '../services/localStorageService.tsx';
+import { accessApiToken } from '../store/localStorageKeys.tsx';
 import { BaseUrl, ApiKey, BaseAPIUrl } from './constants.tsx';
 
 const baseGet = (url: string) => {
@@ -27,7 +29,7 @@ export const addUser = async (user: SignUpRequest) => {
   }
 };
 
-export const login = async (loginRequest: LoginRequest) => {
+export const logIn = async (loginRequest: LoginRequest) => {
   try {
     const response = await fetch(BaseAPIUrl + 'users/login', {
       method: 'POST',
@@ -37,7 +39,10 @@ export const login = async (loginRequest: LoginRequest) => {
       body: JSON.stringify(loginRequest),
     });
 
-    const data = await response.json();
+    if (response.ok) {
+      const data = await response.json();
+      setItem<string>(accessApiToken, data.accessToken);
+    }
     console.log(response.ok);
   } catch (error) {
     console.error('Error adding user:', error);

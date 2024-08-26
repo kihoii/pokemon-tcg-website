@@ -1,15 +1,17 @@
 import './SignUpPage.scss';
 import placeholder from './Ivysaur.png';
 import type { FormProps } from 'antd';
-import { Button, DatePicker, Form, Input } from 'antd';
+import { Button, DatePicker, Form, Input, Modal } from 'antd';
 import { FormItem } from 'react-hook-form-antd';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import dayjs, { type Dayjs } from 'dayjs';
 import * as z from 'zod';
 import { useMutation } from 'react-query';
-import { addUser } from '../../api/helpers';
+import { addUser, logIn } from '../../api/helpers';
 import { SignUpRequest } from '../../models/RequestModels/SignUpRequest';
+import { useState } from 'react';
+import { LoginRequest } from '../../models/RequestModels/LoginRequest';
 
 const phoneRegExp = new RegExp('^[0-9]{10}$');
 const passwordRegExp = new RegExp(
@@ -18,47 +20,73 @@ const passwordRegExp = new RegExp(
 
 const dateFormat = 'YYYY-MM-DD';
 const maxDate = '2023-12-31';
-
-const schemaPassword = z
+const schemaSignUp = z
   .object({
+    name: z
+      .string()
+      .min(1, { message: 'Required' })
+      .max(15, { message: 'Username should be less than 15 characters' }),
+    email: z
+      .string()
+      .email({ message: 'Invalid email' })
+      .min(1, { message: 'Required' }),
+    phone: z.string().regex(phoneRegExp, {
+      message: 'Phone should be in format (999)9999999',
+    }),
+    address: z.string().min(1, { message: 'Required' }),
+    birthDate: z.instanceof(dayjs as unknown as typeof Dayjs, {
+      message: 'Required',
+    }),
     password: z.string().regex(passwordRegExp, {
       message:
-        'The password must be at least 8 characters and contain only Latin letters at least lowercase (a-z), uppercase (A-Z), digit, special character (@,$,!,%,*,?,&)',
+        'The password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@,$,!,%,*,?,&)',
     }),
     passwordConfirm: z.string().min(1, { message: 'Required' }),
   })
-  .refine(
-    (values) => {
-      return values.password === values.passwordConfirm;
-    },
-    {
-      message: 'Passwords must match!',
-      path: ['passwordConfirm'],
-    }
-  );
+  .refine((values) => values.password === values.passwordConfirm, {
+    message: 'Passwords must match!',
+    path: ['passwordConfirm'],
+  });
 
-const schemaRest = z.object({
-  name: z
+const schemaLogin = z.object({
+  loginEmail: z
     .string()
-    .min(1, { message: 'Required' })
-    .max(15, { message: 'Username should be less than 15 characters' }),
-  email: z.string({ message: 'Required' }),
-  phone: z.string().regex(phoneRegExp, {
-    message: 'Phone should be in format (999)9999999',
-  }),
-  address: z.string({ message: 'Required' }),
-  birthDate: z.instanceof(dayjs as unknown as typeof Dayjs, {
-    message: 'Required',
-  }),
+    .email({ message: 'Invalid email' })
+    .min(1, { message: 'Required' }),
+  loginPassword: z.string().min(1, { message: 'Required' }),
 });
 
-const schema = z.intersection(schemaPassword, schemaRest);
-
 export const SignUpPage = () => {
-  const mutation = useMutation(() => addUser(user));
-  const { control, handleSubmit } = useForm({
-    resolver: zodResolver(schema),
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { control: controlSignUp, handleSubmit: handleSignUpSubmit } = useForm({
+    resolver: zodResolver(schemaSignUp),
   });
+
+  const { control: controlLogin, handleSubmit: handleLoginSubmit } = useForm({
+    resolver: zodResolver(schemaLogin),
+  });
+
+  let loginRequest: LoginRequest;
+  const logInMutation = useMutation(() => logIn(loginRequest));
+  const logInOnFinish: FormProps['onFinish'] = (values) => {
+    loginRequest = {
+      email: values['loginEmail'],
+      password: values['loginPassword'],
+    };
+    logInMutation.mutate();
+    setIsModalOpen(false);
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const mutation = useMutation(() => addUser(user));
 
   let user: SignUpRequest;
 
@@ -88,14 +116,14 @@ export const SignUpPage = () => {
             </p>
             <Form
               name="sign-up-form"
-              onFinish={handleSubmit(onFinish)}
+              onFinish={handleSignUpSubmit(onFinish)}
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
               style={{ maxWidth: 600, borderRadius: 120 }}
               initialValues={{ remember: true }}
               autoComplete="off"
             >
-              <FormItem control={control} name="name" label="">
+              <FormItem control={controlSignUp} name="name" label="">
                 <Input
                   placeholder="Enter username"
                   autoComplete="on"
@@ -103,7 +131,7 @@ export const SignUpPage = () => {
                 />
               </FormItem>
 
-              <FormItem control={control} name="email" label="" required>
+              <FormItem control={controlSignUp} name="email" label="" required>
                 <Input
                   type="email"
                   placeholder="Enter email"
@@ -111,14 +139,19 @@ export const SignUpPage = () => {
                 />
               </FormItem>
 
-              <FormItem control={control} name="phone" label="">
+              <FormItem control={controlSignUp} name="phone" label="">
                 <Input
                   placeholder="Enter phone number, ex.:(999)9999999"
                   autoComplete="on"
                 />
               </FormItem>
 
-              <FormItem control={control} name="address" label="" required>
+              <FormItem
+                control={controlSignUp}
+                name="address"
+                label=""
+                required
+              >
                 <Input
                   placeholder="Enter where are you from"
                   autoComplete="on"
@@ -126,7 +159,7 @@ export const SignUpPage = () => {
               </FormItem>
 
               <FormItem
-                control={control}
+                control={controlSignUp}
                 name="birthDate"
                 label="Date Of Birth"
                 required
@@ -134,7 +167,12 @@ export const SignUpPage = () => {
                 <DatePicker maxDate={dayjs(maxDate, dateFormat)} />
               </FormItem>
 
-              <FormItem control={control} name="password" label="" required>
+              <FormItem
+                control={controlSignUp}
+                name="password"
+                label=""
+                required
+              >
                 <Input.Password
                   type="password"
                   name="password"
@@ -144,7 +182,7 @@ export const SignUpPage = () => {
               </FormItem>
 
               <FormItem
-                control={control}
+                control={controlSignUp}
                 name="passwordConfirm"
                 label=""
                 required
@@ -156,20 +194,66 @@ export const SignUpPage = () => {
                 />
               </FormItem>
 
-              {/* <div className="login-button-section"> */}
               <Form.Item>
                 <Button className="button" type="primary" htmlType="submit">
                   Sign Up
                 </Button>
               </Form.Item>
-
-              {/* </div> */}
             </Form>
 
             <Form.Item>
-              <Button className="button" type="primary" htmlType="submit">
+              <Button
+                className="button"
+                type="primary"
+                htmlType="submit"
+                onClick={showModal}
+              >
                 Login
               </Button>
+
+              <Modal
+                title="Login Modal"
+                open={isModalOpen}
+                onOk={handleLoginSubmit(logInOnFinish)}
+                onCancel={handleCancel}
+              >
+                <Form
+                  name="log-in-form"
+                  onFinish={handleLoginSubmit(logInOnFinish)}
+                  labelCol={{ span: 8 }}
+                  wrapperCol={{ span: 16 }}
+                  style={{ maxWidth: 600, borderRadius: 120 }}
+                  initialValues={{ remember: true }}
+                  autoComplete="off"
+                >
+                  <FormItem
+                    control={controlLogin}
+                    name="loginEmail"
+                    label=""
+                    required
+                  >
+                    <Input
+                      type="loginEmail"
+                      placeholder="Enter email"
+                      autoComplete="on"
+                    />
+                  </FormItem>
+
+                  <FormItem
+                    control={controlLogin}
+                    name="loginPassword"
+                    label=""
+                    required
+                  >
+                    <Input.Password
+                      type="loginPassword"
+                      name="loginPassword"
+                      placeholder="Enter password"
+                      autoComplete="on"
+                    />
+                  </FormItem>
+                </Form>
+              </Modal>
             </Form.Item>
           </div>
         </div>
