@@ -12,6 +12,7 @@ import { addUser, logIn } from '../../api/helpers';
 import { SignUpRequest } from '../../models/RequestModels/SignUpRequest';
 import { useState } from 'react';
 import { LoginRequest } from '../../models/RequestModels/LoginRequest';
+import { LoginModal } from '../../components/LogInModal/LogInModal';
 
 const phoneRegExp = new RegExp('^[0-9]{10}$');
 const passwordRegExp = new RegExp(
@@ -48,23 +49,11 @@ const schemaSignUp = z
     path: ['passwordConfirm'],
   });
 
-const schemaLogin = z.object({
-  loginEmail: z
-    .string()
-    .email({ message: 'Invalid email' })
-    .min(1, { message: 'Required' }),
-  loginPassword: z.string().min(1, { message: 'Required' }),
-});
-
 export const SignUpPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { control: controlSignUp, handleSubmit: handleSignUpSubmit } = useForm({
     resolver: zodResolver(schemaSignUp),
-  });
-
-  const { control: controlLogin, handleSubmit: handleLoginSubmit } = useForm({
-    resolver: zodResolver(schemaLogin),
   });
 
   let loginRequest: LoginRequest;
@@ -211,49 +200,11 @@ export const SignUpPage = () => {
                 Login
               </Button>
 
-              <Modal
-                title="Login Modal"
-                open={isModalOpen}
-                onOk={handleLoginSubmit(logInOnFinish)}
-                onCancel={handleCancel}
-              >
-                <Form
-                  name="log-in-form"
-                  onFinish={handleLoginSubmit(logInOnFinish)}
-                  labelCol={{ span: 8 }}
-                  wrapperCol={{ span: 16 }}
-                  style={{ maxWidth: 600, borderRadius: 120 }}
-                  initialValues={{ remember: true }}
-                  autoComplete="off"
-                >
-                  <FormItem
-                    control={controlLogin}
-                    name="loginEmail"
-                    label=""
-                    required
-                  >
-                    <Input
-                      type="loginEmail"
-                      placeholder="Enter email"
-                      autoComplete="on"
-                    />
-                  </FormItem>
-
-                  <FormItem
-                    control={controlLogin}
-                    name="loginPassword"
-                    label=""
-                    required
-                  >
-                    <Input.Password
-                      type="loginPassword"
-                      name="loginPassword"
-                      placeholder="Enter password"
-                      autoComplete="on"
-                    />
-                  </FormItem>
-                </Form>
-              </Modal>
+              <LoginModal
+                isModalOpen={isModalOpen}
+                handleCancel={handleCancel}
+                handleLoginSubmit={logInOnFinish}
+              />
             </Form.Item>
           </div>
         </div>
