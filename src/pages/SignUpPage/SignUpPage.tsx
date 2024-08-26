@@ -12,27 +12,53 @@ import { addUser } from '../../api/helpers';
 import { SignUpRequest } from '../../models/RequestModels/SignUpRequest';
 
 const phoneRegExp = new RegExp('^[(][0-9]{3}[)][0-9]{7}$');
+const passwordRegExp = new RegExp(
+  '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@$!%*?&]).{8,}$'
+);
 
-const schema = z.object({
+const dateFormat = 'YYYY-MM-DD';
+const maxDate = '2023-12-31';
+
+const schemaPassword = z
+  .object({
+    password: z.string().regex(passwordRegExp, {
+      message:
+        'The password must be at least 8 characters and contain only Latin letters at least lowercase (a-z), uppercase (A-Z), digit, special character (@,$,!,%,*,?,&)',
+    }),
+    passwordConfirm: z.string().min(1, { message: 'Required' }),
+  })
+  .refine(
+    (values) => {
+      return values.password === values.passwordConfirm;
+    },
+    {
+      message: 'Passwords must match!',
+      path: ['passwordConfirm'],
+    }
+  );
+
+const schemaRest = z.object({
   name: z
     .string()
     .min(1, { message: 'Required' })
     .max(15, { message: 'Username should be less than 15 characters' }),
   email: z.string({ message: 'Required' }),
   phone: z.string().regex(phoneRegExp, {
-    message: 'Required',
+    message: 'Phone should be in format (999)9999999',
   }),
   address: z.string({ message: 'Required' }),
   birthDate: z.instanceof(dayjs as unknown as typeof Dayjs, {
     message: 'Required',
   }),
-  password: z.string().min(1, { message: 'Required' }),
-  passwordConfirm: z.string().min(1, { message: 'Required' }),
 });
+
+const schema = z.intersection(schemaPassword, schemaRest);
 
 export const SignUpPage = () => {
   const mutation = useMutation(() => addUser(user));
-  const { control, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+  const { control, handleSubmit } = useForm({
+    resolver: zodResolver(schema),
+  });
 
   let user: SignUpRequest;
 
@@ -86,7 +112,10 @@ export const SignUpPage = () => {
               </FormItem>
 
               <FormItem control={control} name="phone" label="">
-                <Input placeholder="Enter phone" autoComplete="on" />
+                <Input
+                  placeholder="Enter phone number, ex.:(999)9999999"
+                  autoComplete="on"
+                />
               </FormItem>
 
               <FormItem control={control} name="address" label="" required>
@@ -102,7 +131,7 @@ export const SignUpPage = () => {
                 label="Date Of Birth"
                 required
               >
-                <DatePicker />
+                <DatePicker maxDate={dayjs(maxDate, dateFormat)} />
               </FormItem>
 
               <FormItem control={control} name="password" label="" required>
