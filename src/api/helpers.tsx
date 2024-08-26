@@ -1,6 +1,7 @@
 import { PokemonDto } from '../interfaces/PokemonDto.tsx';
+import { LoginRequest } from '../models/RequestModels/Loginrequest.tsx';
 import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
-import { BaseUrl, ApiKey } from './constants.tsx';
+import { BaseUrl, ApiKey, BaseAPIUrl } from './constants.tsx';
 
 const baseGet = (url: string) => {
   return fetch(BaseUrl + url, {
@@ -11,16 +12,32 @@ const baseGet = (url: string) => {
 
 export const addUser = async (user: SignUpRequest) => {
   try {
-    const response = await fetch(
-      import.meta.env.VITE_MIRACULOUS_API_URL + 'users/sign-up',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(BaseAPIUrl + 'users/sign-up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+
+    const data = await response.json();
+    console.log(response.ok);
+  } catch (error) {
+    console.error('Error adding user:', error);
+  }
+};
+
+export const login = async (loginRequest: LoginRequest) => {
+  try {
+    const response = await fetch(BaseAPIUrl + 'users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginRequest),
+    });
+
+    const data = await response.json();
     console.log(response.ok);
   } catch (error) {
     console.error('Error adding user:', error);

@@ -11,7 +11,7 @@ import { useMutation } from 'react-query';
 import { addUser } from '../../api/helpers';
 import { SignUpRequest } from '../../models/RequestModels/SignUpRequest';
 
-const phoneRegExp = new RegExp('^[(][0-9]{3}[)][0-9]{7}$');
+const phoneRegExp = new RegExp('^[0-9]{10}$');
 const passwordRegExp = new RegExp(
   '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[@$!%*?&]).{8,}$'
 );
@@ -156,12 +156,21 @@ export const SignUpPage = () => {
                 />
               </FormItem>
 
+              {/* <div className="login-button-section"> */}
               <Form.Item>
                 <Button className="button" type="primary" htmlType="submit">
                   Sign Up
                 </Button>
               </Form.Item>
+
+              {/* </div> */}
             </Form>
+
+            <Form.Item>
+              <Button className="button" type="primary" htmlType="submit">
+                Login
+              </Button>
+            </Form.Item>
           </div>
         </div>
       </div>
