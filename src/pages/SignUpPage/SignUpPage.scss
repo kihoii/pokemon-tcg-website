@@ -1,21 +1,45 @@
 @import '../../variables';
 
-#main-section {
+#sign-up-page {
   display: flex;
-  flex-direction: row;
-  .left-container {
-  }
-  .right-container {
-    padding-top: 100px;
-    padding-left: 60px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
-    h1 {
-      font-size: 67px;
-      font-weight: 600;
-      font-family: $font-header, monospace;
+  h2 {
+    font-size: 46px;
+    font-weight: 600;
+    font-family: $font-header;
+    margin-bottom: 20px;
+  }
+
+  .sign-up-box {
+    display: flex;
+    gap: 50px;
+  }
+
+  .left-banner {
+    width: 500px;
+    object-fit: contain;
+  }
+
+  .right-container {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 450px;
+
+    .ant-col {
+      padding: 0;
+      text-align: start;
+      width: 330px;
     }
 
-    h2 {
+    .ant-input-number {
+      width: 300px;
+    }
+    p {
       font-size: 22px;
     }
 
@@ -23,28 +47,11 @@
       max-width: 600px;
       margin-bottom: 20px;
     }
-
-    Input {
-      border-color: black;
-    }
-  }
-
-  .grey {
-    color: rgb(89, 87, 87);
   }
 
   button {
     width: 200px;
     height: 50px;
     font-size: 15px;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  .image-pokemon {
-    max-width: 700px;
-    max-height: 700px;
   }
 }

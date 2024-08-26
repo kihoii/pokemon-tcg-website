@@ -11,12 +11,12 @@
     h1 {
       font-size: 67px;
       font-weight: 600;
-      font-family: $font-header, monospace;
+      font-family: $font-header;
     }
 
     h2 {
       font-size: 22px;
-      font-family: $font-header, monospace;
+      font-family: $font-header;
     }
   }
 
@@ -36,7 +36,7 @@
       .info-number {
         font-size: 28px;
         font-weight: 700;
-        font-family: $font-header, monospace;
+        font-family: $font-header;
       }
 
       .info-type {
