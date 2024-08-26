@@ -1,3 +1,5 @@
+@import '../../variables';
+
 #sign-up-page {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
   h2 {
     font-size: 46px;
     font-weight: 600;
-    font-family: 'Space Mono', monospace;
+    font-family: $font-header;
     margin-bottom: 20px;
   }
 
