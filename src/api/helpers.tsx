@@ -39,11 +39,12 @@ export const logIn = async (loginRequest: LoginRequest) => {
       body: JSON.stringify(loginRequest),
     });
 
+    console.log(response.ok);
     if (response.ok) {
       const data = await response.json();
       setItem<string>(accessApiToken, data.accessToken);
+      window.location.assign('/auction-market');
     }
-    console.log(response.ok);
   } catch (error) {
     console.error('Error adding user:', error);
   }
