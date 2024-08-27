@@ -3,15 +3,28 @@ import './Navbar.scss';
 import { Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { WishList } from '../WishList/WishList';
+import { getItem, removeItem } from '../../services/localStorageService';
+import { accessApiToken } from '../../store/localStorageKeys';
 
 export const Navbar = () => {
+  const token = getItem<string>(accessApiToken);
+
+  function signOutOnClick() {
+    removeItem(accessApiToken);
+    window.location.assign('/');
+  }
+
   return (
     <div className="navbar">
       <Logo />
       <nav>
-        <NavLink className="nav-link" to="/auction-market">
-          Auctions
-        </NavLink>
+        {token ? (
+          <NavLink className="nav-link" to="/auction-market">
+            Auctions
+          </NavLink>
+        ) : (
+          <></>
+        )}
         <NavLink className="nav-link" to="/market">
           Marketplace
         </NavLink>
@@ -22,9 +35,15 @@ export const Navbar = () => {
           Connect a wallet
         </NavLink>
         <WishList />
-        <Button type="primary" href="/sign-up">
-          Sign up
-        </Button>
+        {token ? (
+          <Button type="primary" danger onClick={signOutOnClick}>
+            Sign out
+          </Button>
+        ) : (
+          <Button type="primary" href="/sign-up">
+            Sign up
+          </Button>
+        )}
       </nav>
     </div>
   );

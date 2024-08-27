@@ -74,7 +74,7 @@ export function AuctionPage(): React.JSX.Element {
     if (auction) {
       auction.currentBet = newBet;
       auction.activeTime = 24;
-      setAuctionState(1);
+      setAuctionState(AuctionStepEnum.InProgress);
       setCurrentBetPrice(newBet.price);
       setMinPrice(+(newBet.price + auction.minStep).toFixed(2));
       setActiveTime(auction.activeTime);
