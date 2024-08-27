@@ -1,7 +1,7 @@
 import './SignUpPage.scss';
 import placeholder from './Ivysaur.png';
 import type { FormProps } from 'antd';
-import { Button, DatePicker, Form, Input, Modal } from 'antd';
+import { Button, DatePicker, Form, Input } from 'antd';
 import { FormItem } from 'react-hook-form-antd';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,7 +20,7 @@ const passwordRegExp = new RegExp(
 );
 
 const dateFormat = 'YYYY-MM-DD';
-const maxDate = '2023-12-31';
+const maxDate = '2020-12-31';
 const schemaSignUp = z
   .object({
     name: z
@@ -153,7 +153,10 @@ export const SignUpPage = () => {
                 label="Date Of Birth"
                 required
               >
-                <DatePicker maxDate={dayjs(maxDate, dateFormat)} />
+                <DatePicker
+                  showNow={false}
+                  maxDate={dayjs(maxDate, dateFormat)}
+                />
               </FormItem>
 
               <FormItem
