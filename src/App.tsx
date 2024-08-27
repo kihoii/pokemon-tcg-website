@@ -14,6 +14,7 @@ import { Footer } from './components/Footer/Footer.tsx';
 import { WishListPage } from './pages/WishListPage/WishListPage.tsx';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { CreateAuctionPage } from './pages/CreateAuctionPage/CreateAuctionPage.tsx';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             path="/auctions/created"
             element={<UserCreatedAuctionsPage />}
           />
+          <Route path="create-auction" element={<CreateAuctionPage />} />
           <Route path="auction/:id" element={<AuctionPage />} />
           <Route path="wish-list" element={<WishListPage />} />
           <Route path="*" element={<NotFoundPage />} />
