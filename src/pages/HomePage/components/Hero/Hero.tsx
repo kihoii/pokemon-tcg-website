@@ -10,7 +10,12 @@ export const Hero = () => {
           <h1>Pokémon TCG</h1>
           <h2>Collect, buy and exchange!</h2>
         </div>
-        <Button type="primary">Join now</Button>
+        <Button
+          type="primary"
+          onClick={() => window.location.assign('sign-up')}
+        >
+          Join now
+        </Button>
         <div className="add-info">
           <div className="info-block">
             <p className="info-number">240k+</p>
