@@ -14,6 +14,7 @@ import {
 } from '../../store/localStorageKeys.tsx';
 import { useState, useEffect } from 'react';
 import { getItem } from '../../services/localStorageService.tsx';
+import { setHasUserCard } from '../../store/userCardsSlice.tsx';
 
 const { Meta } = Card;
 
@@ -55,6 +56,7 @@ export function PokemonPage(): React.JSX.Element {
     const success = await AddCardToUser(cardId);
     if (success) {
       setIsCardBought(true);
+      dispatch(setHasUserCard());
     }
   }
 
