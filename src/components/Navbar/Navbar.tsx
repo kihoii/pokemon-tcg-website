@@ -30,7 +30,6 @@ const items: MenuProps['items'] = [
 ];
 export const Navbar = () => {
   const token = getItem<string>(accessApiToken, '');
-  const token = getItem<string>(accessApiToken, '');
   const hasCards = useAppSelector((state) => state.userCards.hasCards);
 
   function signOutOnClick() {
@@ -42,7 +41,7 @@ export const Navbar = () => {
     <div className="navbar">
       <Logo />
       <nav>
-        {hasCards ? (
+        {token && hasCards ? (
           <Button type="primary" href="/create-auction">
             Create auction
           </Button>
