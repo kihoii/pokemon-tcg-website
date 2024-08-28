@@ -1,5 +1,6 @@
 import { CardFullResponse } from '../models/ResponseModels/CardFullResponse.tsx';
 import { CardShortResponse } from '../models/ResponseModels/CardShortResponse.tsx';
+import { CreateAuctionRequest } from '../models/RequestModels/CreateAuctionRequest.tsx';
 import { LoginRequest } from '../models/RequestModels/LoginRequest.tsx';
 import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
 import { setItem } from '../services/localStorageService.tsx';
@@ -114,5 +115,36 @@ export const getCardsByIds = async (ids: string[]): Promise<PokemonDto[]> => {
   } catch (error) {
     console.error('Error fetching cards by IDs:', error);
     return [];
+  }
+};
+
+export const AddAuction = async (
+  model: CreateAuctionRequest
+): Promise<boolean> => {
+  try {
+    const auction = {
+      owner: { id: 5, name: 'Peter Pettigrew' },
+      card: { id: model.cardId, name: 'Weedle' },
+      cardName: model.cardName,
+      createdAt: new Date(),
+      startPrice: model.startPrice,
+      currentBet: undefined,
+      activeTime: 24,
+      minStep: model.minStep,
+      isAborted: false,
+      isFinished: false,
+    };
+    const response = await fetch(AuctionServiceBaseUrl + `auctions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(auction),
+    });
+    const data = response.json();
+    return response.ok;
+  } catch (error) {
+    console.error('Error fetching cards:', error);
+    return false;
   }
 };
