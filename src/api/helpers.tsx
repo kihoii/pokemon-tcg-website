@@ -1,4 +1,5 @@
-import { PokemonDto } from '../interfaces/PokemonDto.tsx';
+import { CardFullResponse } from '../models/ResponseModels/CardFullResponse.tsx';
+import { CardShortResponse } from '../models/ResponseModels/CardShortResponse.tsx';
 import { LoginRequest } from '../models/RequestModels/LoginRequest.tsx';
 import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
 import { setItem } from '../services/localStorageService.tsx';
@@ -53,13 +54,13 @@ export const logIn = async (loginRequest: LoginRequest) => {
 export const getCards = async (
   page: number,
   pageSize: number
-): Promise<PokemonDto[]> => {
+): Promise<CardShortResponse[]> => {
   try {
     const response = await baseGet(
       `cards?page=` + page + `&pageSize=` + pageSize
     );
     const data = await response.json();
-    return data.data as PokemonDto[];
+    return data.data as CardShortResponse[];
   } catch (error) {
     console.error('Error fetching cards:', error);
     return [];
@@ -68,11 +69,11 @@ export const getCards = async (
 
 export const getCardById = async (
   id: string
-): Promise<PokemonDto | undefined> => {
+): Promise<CardFullResponse | undefined> => {
   try {
     const response = await baseGet(`cards/` + id);
     const data = await response.json();
-    return data.data as PokemonDto;
+    return data.data as CardFullResponse;
   } catch (error) {
     console.error('Error fetching cards:', error);
     return;

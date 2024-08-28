@@ -1,4 +1,5 @@
 import { BetShortResponse } from './BetShortResponse';
+import { BetResponse } from './BetResponse';
 import { CardShortResponse } from './CardShortResponse';
 import { UserResponse } from './UserResponse';
 
@@ -14,4 +15,5 @@ export interface AuctionResponse {
   minStep: number;
   isAborted?: boolean;
   isFinished?: boolean;
+  bets?: BetResponse[];
 }

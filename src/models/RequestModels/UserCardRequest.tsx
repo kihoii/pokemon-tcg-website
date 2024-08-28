@@ -1,4 +1,5 @@
 export interface UserCardRequest {
   userId: number;
-  cardId: number;
+  cardId: string;
+  type: number;
 }

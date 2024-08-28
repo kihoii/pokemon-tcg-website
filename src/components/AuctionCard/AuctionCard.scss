@@ -1,0 +1,125 @@
+@import '../../variables';
+
+.auction-card {
+  width: 320px;
+  display: flex;
+  background-color: $gray-background;
+  padding: 15px 20px;
+  border-radius: 10px;
+  gap: 10px;
+
+  .img {
+    width: 145px;
+    align-self: center;
+  }
+
+  .auction-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 5px;
+  }
+
+  .auction-base-info {
+    font-size: 12px;
+    color: $blue-color;
+    font-weight: 600;
+
+    .auction-owner {
+      color: $dark-gray;
+
+      a {
+        color: $dark-gray;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  hr {
+    color: white;
+  }
+
+  .auction-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 5px;
+  }
+
+  .auction-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+
+    margin-top: 5px;
+    padding-bottom: 30px;
+  }
+
+  .auction-info {
+    align-self: flex-start;
+    color: $dark-gray;
+    font-weight: 600;
+
+    span {
+      font-weight: 800;
+      color: $blue-color;
+    }
+  }
+}
+
+/*.ant-card.auction-card {
+  display: block;
+  width: 300px;
+  padding: 10px 20px;
+  background-color: $gray-background;
+
+  .ant-card-head {
+    padding: 0;
+    margin-bottom: 5px;
+  }
+
+  .ant-card-body {
+    padding: 24px 0;
+  }
+
+  .ant-card-head-title {
+    display: flex;
+    justify-content: space-between;
+    color: $blue-color;
+    font-size: 16px;
+  }
+
+  .ant-card-meta-title {
+    font-size: 22px;
+    text-align: center;
+    color: $blue-color;
+  }
+
+  .img {
+    width: 100%;
+  }
+}
+
+.auction-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+
+  font-weight: 700;
+  color: $blue-color;
+
+  span {
+    font-weight: 400;
+    color: $dark-gray;
+  }
+}*/
+
+.auction-time-is-up {
+  background-color: $dark-gray;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
