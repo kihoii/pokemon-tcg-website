@@ -19,6 +19,7 @@ const { Meta } = Card;
 
 export function PokemonPage(): React.JSX.Element {
   const [isInWishList, setIsInWishList] = useState(false);
+  const [isCardBought, setIsCardBought] = useState(false);
   const dispatch = useAppDispatch();
   const params = useParams();
   const {
@@ -50,8 +51,11 @@ export function PokemonPage(): React.JSX.Element {
     setIsInWishList(false);
   }
 
-  function onClickByCard(cardId: string) {
-    AddCardToUser(cardId);
+  async function onClickByCard(cardId: string) {
+    const success = await AddCardToUser(cardId);
+    if (success) {
+      setIsCardBought(true);
+    }
   }
 
   const token = getItem<string>(accessApiToken, '');
@@ -80,12 +84,10 @@ export function PokemonPage(): React.JSX.Element {
             Add to Wishlist
           </Button>
         )}
-        {token ? (
+        {token && !isCardBought && (
           <Button type="primary" onClick={() => onClickByCard(card?.id!)}>
             Buy Card
           </Button>
-        ) : (
-          <></>
         )}
       </div>
     </div>
