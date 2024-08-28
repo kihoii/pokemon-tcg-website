@@ -1,8 +1,15 @@
 import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import './Hero.scss';
 import banner from './assets/hero-banner.png';
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleJoinNow = () => {
+    navigate('/sign-up');
+  };
+
   return (
     <section className="container" id="hero">
       <div className="hero-info">
@@ -10,10 +17,7 @@ export const Hero = () => {
           <h1>Pokémon TCG</h1>
           <h2>Collect, buy and exchange!</h2>
         </div>
-        <Button
-          type="primary"
-          onClick={() => window.location.assign('sign-up')}
-        >
+        <Button type="primary" onClick={handleJoinNow}>
           Join now
         </Button>
         <div className="add-info">
