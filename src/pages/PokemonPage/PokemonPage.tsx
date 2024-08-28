@@ -2,7 +2,7 @@ import './PokemonPage.scss';
 import { useQuery } from 'react-query';
 import { AddCardToUser, getCardById } from '../../api/helpers.tsx';
 import { useParams } from 'react-router-dom';
-import { Button, Card } from 'antd';
+import { Button, Card, message } from 'antd';
 import {
   addToWishList,
   removeFromWishList,
@@ -21,12 +21,14 @@ const { Meta } = Card;
 export function PokemonPage(): React.JSX.Element {
   const [isInWishList, setIsInWishList] = useState(false);
   const [isCardBought, setIsCardBought] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
   const params = useParams();
+  const [messageApi, contextHolder] = message.useMessage();
   const {
     data: card,
     error,
-    isLoading,
+    isLoading: isCardLoading,
   } = useQuery(['card', params.id], () => getCardById(params.id as string));
 
   useEffect(() => {
@@ -34,12 +36,55 @@ export function PokemonPage(): React.JSX.Element {
     setIsInWishList(wishList.includes(params.id as string));
   }, [params.id]);
 
-  if (isLoading) {
+  useEffect(() => {
+    if (loadingMessage) {
+      messageApi.open({
+        key: 'loading',
+        type: 'loading',
+        content: loadingMessage,
+        duration: 0,
+      });
+    } else {
+      messageApi.destroy();
+    }
+  }, [loadingMessage, messageApi]);
+
+  useEffect(() => {
+    if (isCardBought) {
+      messageApi.open({
+        key: 'success',
+        type: 'success',
+        content: 'Card purchased successfully!',
+        duration: 2,
+      });
+    }
+
+    if (!isCardBought && error) {
+      messageApi.open({
+        key: 'error',
+        type: 'error',
+        content: 'Failed to purchase the card.',
+        duration: 2,
+      });
+    }
+  }, [isCardBought, error, messageApi]);
+
+  if (isCardLoading) {
     return <div className="loader">Loading...</div>;
   }
 
   if (error) {
     return <div>Error loading cards</div>;
+  }
+
+  async function onClickByCard(cardId: string) {
+    setLoadingMessage('Processing your purchase...');
+    const success = await AddCardToUser(cardId);
+    if (success) {
+      setIsCardBought(true);
+      dispatch(setHasUserCard());
+    }
+    setLoadingMessage(null);
   }
 
   function onClickAddToWishList(cardId: string) {
@@ -52,18 +97,11 @@ export function PokemonPage(): React.JSX.Element {
     setIsInWishList(false);
   }
 
-  async function onClickByCard(cardId: string) {
-    const success = await AddCardToUser(cardId);
-    if (success) {
-      setIsCardBought(true);
-      dispatch(setHasUserCard());
-    }
-  }
-
   const token = getItem<string>(accessApiToken, '');
 
   return (
     <div className="card-page">
+      {contextHolder}
       <div className="card-page-container">
         <Card
           className="pokemon-card"
