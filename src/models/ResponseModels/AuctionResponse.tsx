@@ -1,3 +1,4 @@
+import { BetShortResponse } from './BetShortResponse';
 import { BetResponse } from './BetResponse';
 import { CardShortResponse } from './CardShortResponse';
 import { UserResponse } from './UserResponse';
@@ -9,7 +10,7 @@ export interface AuctionResponse {
   cardName?: string;
   createdAt?: string;
   startPrice?: number;
-  currentPrice: number;
+  currentBet?: BetShortResponse;
   activeTime: number; //hours
   minStep: number;
   isAborted?: boolean;

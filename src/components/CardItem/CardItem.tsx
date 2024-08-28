@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CardItem.css';
+import './CardItem.scss';
 import { Col, Card } from 'antd';
 import { CardShortResponse } from '../../models/ResponseModels/CardShortResponse.tsx';
 

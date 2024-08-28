@@ -11,6 +11,8 @@ import { CardsPage } from './pages/CardsPage/CardsPage.tsx';
 import { HomePage } from './pages/HomePage/HomePage.tsx';
 import { Navbar } from './components/Navbar/Navbar.tsx';
 import { Footer } from './components/Footer/Footer.tsx';
+import { PokemonPage } from './pages/PokemonPage/PokemonPage.tsx';
+import { WishListPage } from './pages/WishListPage/WishListPage.tsx';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 
@@ -37,6 +39,7 @@ function App() {
             element={<UserCreatedAuctionsPage />}
           />
           <Route path="auction/:id" element={<AuctionPage />} />
+          <Route path="wish-list" element={<WishListPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

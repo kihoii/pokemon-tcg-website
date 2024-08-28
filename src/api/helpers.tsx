@@ -1,12 +1,54 @@
 import { CardFullResponse } from '../models/ResponseModels/CardFullResponse.tsx';
 import { CardShortResponse } from '../models/ResponseModels/CardShortResponse.tsx';
-import { BaseUrl, ApiKey } from './constants.tsx';
+import { LoginRequest } from '../models/RequestModels/LoginRequest.tsx';
+import { SignUpRequest } from '../models/RequestModels/SignUpRequest.tsx';
+import { setItem } from '../services/localStorageService.tsx';
+import { accessApiToken } from '../store/localStorageKeys.tsx';
+import { BaseUrl, ApiKey, BaseAPIUrl } from './constants.tsx';
 
 const baseGet = (url: string) => {
   return fetch(BaseUrl + url, {
     method: 'GET',
     headers: { 'X-Api-Key': ApiKey },
   });
+};
+
+export const addUser = async (user: SignUpRequest) => {
+  try {
+    const response = await fetch(BaseAPIUrl + 'users/sign-up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+
+    const data = await response.json();
+    console.log(response.ok);
+  } catch (error) {
+    console.error('Error adding user:', error);
+  }
+};
+
+export const logIn = async (loginRequest: LoginRequest) => {
+  try {
+    const response = await fetch(BaseAPIUrl + 'users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginRequest),
+    });
+
+    console.log(response.ok);
+    if (response.ok) {
+      const data = await response.json();
+      setItem<string>(accessApiToken, data.accessToken);
+      window.location.assign('/auction-market');
+    }
+  } catch (error) {
+    console.error('Error adding user:', error);
+  }
 };
 
 export const getCards = async (
@@ -35,5 +77,16 @@ export const getCardById = async (
   } catch (error) {
     console.error('Error fetching cards:', error);
     return;
+  }
+};
+
+export const getCardsByIds = async (ids: string[]): Promise<PokemonDto[]> => {
+  try {
+    const cardPromises = ids.map((id) => getCardById(id));
+    const cards = await Promise.all(cardPromises);
+    return cards.filter((card) => card !== undefined) as PokemonDto[];
+  } catch (error) {
+    console.error('Error fetching cards by IDs:', error);
+    return [];
   }
 };

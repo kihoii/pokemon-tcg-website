@@ -1,3 +1,5 @@
+@import '../../../../variables';
+
 #ranking-section {
   button {
     border-radius: 20px;
@@ -7,6 +9,12 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
+
+    .headline {
+      h3 {
+        font-family: $font-header;
+      }
+    }
   }
 
   button {
