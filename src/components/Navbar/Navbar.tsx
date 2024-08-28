@@ -8,6 +8,7 @@ import { Dropdown, Space } from 'antd';
 import { WishList } from '../WishList/WishList';
 import { getItem, removeItem } from '../../services/localStorageService';
 import { accessApiToken } from '../../store/localStorageKeys';
+import { useAppSelector } from '../../store/hooks';
 
 const items: MenuProps['items'] = [
   {
@@ -29,6 +30,7 @@ const items: MenuProps['items'] = [
 ];
 export const Navbar = () => {
   const token = getItem<string>(accessApiToken, '');
+  const hasCards = useAppSelector((state) => state.userCards.hasCards);
 
   function signOutOnClick() {
     removeItem(accessApiToken);
@@ -39,6 +41,13 @@ export const Navbar = () => {
     <div className="navbar">
       <Logo />
       <nav>
+        {token && hasCards ? (
+          <Button type="primary" href="/create-auction">
+            Create auction
+          </Button>
+        ) : (
+          <></>
+        )}
         {token ? (
           <NavLink className="nav-link" to="/auctions">
             Auctions
