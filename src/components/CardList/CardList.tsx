@@ -6,6 +6,7 @@ import { Pagination, PaginationProps, Row } from 'antd';
 import { CardItem } from '../../components/CardItem/CardItem';
 import { changePage } from '../../store/cardsPageSlice';
 import { getCards, getCardsByIds } from '../../api/helpers';
+import { SpinLoader } from '../SpinLoader/SpinLoader';
 
 interface CardIds {
   cardIds: string[];
@@ -30,19 +31,20 @@ export function CardList({ cardIds: cardIds }: CardIds): React.JSX.Element {
       })
     : useQuery(['cards', page, pageSize], () => getCards(page, pageSize));
 
-  if (isLoading) {
-    return <div className="loader">Loading...</div>;
-  }
-
   if (error) {
     return <div>Error loading cards</div>;
   }
 
   return (
     <div className="cards-page">
-      <Row gutter={16}>
-        {cards?.map((item) => <CardItem key={item.id} pokemon={item} />)}
-      </Row>
+      {isLoading ? (
+        <SpinLoader />
+      ) : (
+        <Row gutter={16}>
+          {cards?.map((item) => <CardItem key={item.id} card={item} />)}
+        </Row>
+      )}
+
       <Pagination
         showQuickJumper
         defaultCurrent={page}

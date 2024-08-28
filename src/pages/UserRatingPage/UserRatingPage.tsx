@@ -1,11 +1,9 @@
-import { useLocation } from 'react-router-dom';
 import { UserCard } from '../../components/UserCard/UserCard';
 import { RatingHeader } from './components/RatingHeader/RatingHeader';
 import { UserResponse } from '../../models/ResponseModels/UserResponse';
 import './UserRatingPage.scss';
 
 export const UserRatingPage = () => {
-  console.log(useLocation().pathname);
   //we dont have backend
   const usersRatingList: UserResponse[] = [
     {
@@ -70,7 +68,7 @@ export const UserRatingPage = () => {
             type="long-card"
             rating={index + 1}
             user={{ ...user }}
-          /> 
+          />
         ))}
       </div>
     </div>

@@ -28,7 +28,7 @@ const items: MenuProps['items'] = [
   },
 ];
 export const Navbar = () => {
-  const token = getItem<string>(accessApiToken);
+  const token = getItem<string>(accessApiToken, '');
 
   function signOutOnClick() {
     removeItem(accessApiToken);
@@ -40,48 +40,38 @@ export const Navbar = () => {
       <Logo />
       <nav>
         {token ? (
-          <NavLink className="nav-link" to="/auction-market">
+          <NavLink className="nav-link" to="/auctions">
             Auctions
           </NavLink>
         ) : (
           <></>
         )}
-        <NavLink className="nav-link" to="/market">
-          Marketplace
-        </NavLink>
         <NavLink className="nav-link" to="/cards">
           Card Collection
-        </NavLink>
-        <NavLink className="nav-link" to="/auctions">
-          Auctions
         </NavLink>
         <NavLink className="nav-link" to="/ranking">
           Ranking
         </NavLink>
-        <NavLink className="nav-link" to="/wallet">
-          Connect a wallet
-        </NavLink>
         <WishList />
         {token ? (
-          <Button type="primary" danger onClick={signOutOnClick}>
-            Sign out
-          </Button>
+          <>
+            <Dropdown className="nav-link" menu={{ items }}>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  My auctions
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+            <Button type="primary" danger onClick={signOutOnClick}>
+              Sign out
+            </Button>
+          </>
         ) : (
           <Button type="primary" href="/sign-up">
             Sign up
           </Button>
         )}
-        <Dropdown className="nav-link" menu={{ items }}>
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              My auctions
-              <DownOutlined />
-            </Space>
-          </a>
-        </Dropdown>
-        <Button type="primary" href="/sign-up">
-          Sign up
-        </Button>
       </nav>
     </div>
   );

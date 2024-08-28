@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .cards-page {
   display: flex;
   justify-content: center;
@@ -10,8 +12,8 @@
     align-items: center;
   }
 
-  h2 {
-    font-family: 'Space Mono', monospace;
+  .header {
+    font-family: $font-header;
     font-size: 36px;
   }
 }
