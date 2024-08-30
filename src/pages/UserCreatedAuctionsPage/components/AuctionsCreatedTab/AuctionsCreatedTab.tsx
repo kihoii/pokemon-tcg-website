@@ -11,8 +11,6 @@ export const AuctionsCreatedTab = ({
 }) => {
   const ownerId = 2;
   //created query with status
-  console.log(isAborted == true);
-  console.log(isFinished == true);
   const auctions = auctionsMock.filter(
     (auction) =>
       auction.owner!.id == ownerId &&

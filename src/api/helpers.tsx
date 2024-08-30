@@ -30,7 +30,6 @@ export const addUser = async (user: SignUpRequest) => {
     });
 
     const data = await response.json();
-    console.log(response.ok);
   } catch (error) {
     console.error('Error adding user:', error);
   }
@@ -50,7 +49,7 @@ export const logIn = async (loginRequest: LoginRequest) => {
     if (response.ok) {
       const data = await response.json();
       setItem<string>(accessApiToken, data.accessToken);
-      window.location.assign('/auction-market');
+      window.location.assign('/auctions');
     }
   } catch (error) {
     console.error('Error adding user:', error);
@@ -107,11 +106,13 @@ export const getCardById = async (
   }
 };
 
-export const getCardsByIds = async (ids: string[]): Promise<PokemonDto[]> => {
+export const getCardsByIds = async (
+  ids: string[]
+): Promise<CardShortResponse[]> => {
   try {
     const cardPromises = ids.map((id) => getCardById(id));
     const cards = await Promise.all(cardPromises);
-    return cards.filter((card) => card !== undefined) as PokemonDto[];
+    return cards.filter((card) => card !== undefined) as CardShortResponse[];
   } catch (error) {
     console.error('Error fetching cards by IDs:', error);
     return [];

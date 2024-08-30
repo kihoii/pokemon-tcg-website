@@ -32,7 +32,7 @@ export const CardItem: React.FC<{ card: CardShortResponse }> = ({ card }) => {
     <Col span={columnSpan}>
       <Card
         hoverable={true}
-        onClick={() => window.location.assign('/pokemon/' + card.id)}
+        onClick={() => window.location.assign('/card/' + card.id)}
         className="pokemon-card"
         title={card.name}
         bordered={false}

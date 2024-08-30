@@ -10,8 +10,6 @@ export const AuctionsParticipatedTab = ({
   isAborted?: boolean;
 }) => {
   //participated query with status
-  console.log(isAborted);
-  console.log(isFinished);
   const auctions: AuctionResponse[] = [];
 
   return <AuctionCardsGrid auctions={auctions} />;

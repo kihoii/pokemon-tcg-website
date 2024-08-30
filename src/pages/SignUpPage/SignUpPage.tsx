@@ -32,7 +32,7 @@ const schemaSignUp = z
       .email({ message: 'Invalid email' })
       .min(1, { message: 'Required' }),
     phone: z.string().regex(phoneRegExp, {
-      message: 'Phone should be in format (999)9999999',
+      message: 'Phone should be in format 9999999999',
     }),
     address: z.string().min(1, { message: 'Required' }),
     birthDate: z.instanceof(dayjs as unknown as typeof Dayjs, {
@@ -88,7 +88,6 @@ export const SignUpPage = () => {
       birthDate: values['birthDate'].format('YYYY-MM-DD'),
       password: values['password'],
     };
-    console.log('Success:', user);
     mutation.mutate();
   };
 
@@ -130,7 +129,7 @@ export const SignUpPage = () => {
 
               <FormItem control={controlSignUp} name="phone" label="">
                 <Input
-                  placeholder="Enter phone number, ex.:(999)9999999"
+                  placeholder="Enter phone number, ex.: 9999999999"
                   autoComplete="on"
                 />
               </FormItem>
